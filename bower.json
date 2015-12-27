@@ -1,0 +1,26 @@
+{
+  "name": "wine",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Insane <luojieyy@gmail.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "underscore": "~1.8.3",
+    "jquery": "~2.1.4",
+    "normalize-css": "normalize.css#~3.0.3",
+    "angular": "~1.4.8",
+    "angular-ui-router": "~0.2.15",
+    "ng-dialog": "~0.5.6"
+  }
+}

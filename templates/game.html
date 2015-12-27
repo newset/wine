@@ -1,0 +1,23 @@
+<div class="game">
+    <div id="gamecontainer">
+        <img src="img/board.png" alt="">
+        <div class="blocks">
+            <div class="block" ng-repeat="block in game.matrix track by $index">
+                <img ng-src="{{res.url + block + res.extension}}" alt="">
+            </div>
+        </div>
+        <div class="numbers" ng-show="game.status && game.status == 'started'">
+            <div class="time" data-time="90">
+                {{game.time}}
+                <span>s</span>
+            </div>
+            <div class="score" data-score="0" ng-bind="game.score">
+                
+            </div>
+        </div>
+        <div class="action btns" ng-hide="game.status && game.status == 'started'">
+            <input type="button" value="开始" class="start btn" ng-click="start()">
+        </div>
+    </div>
+   
+</div>

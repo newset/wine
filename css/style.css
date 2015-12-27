@@ -1,0 +1,103 @@
+html, body{
+	height: 100%;
+}
+
+body{
+	background: url('../img/bg-repeat.jpg');
+}
+
+.btn{
+	height: 30px;
+	width: auto;
+	border: none;
+	cursor: pointer;
+}
+
+.grid{
+	height: 100%;
+}
+
+.game{
+	background-color: #999;
+	background-image: url('../img/bg.jpg');
+	background-size: contain;
+}
+
+#gamecontainer{
+	position: relative;
+	height: 620px;
+}
+
+#gamecontainer .block{
+	height: 40px;
+	width: 40px;
+}
+
+#gamecontainer img{
+	max-width: 100%;
+	min-width: 100%;
+}
+
+#gamecontainer .blocks{
+	position: absolute;
+	top: 142px;
+	display: flex;
+	flex-wrap: wrap;
+	height: 350px;
+	padding: 0 30px;
+	box-sizing: border-box;
+	width: 100%;
+	justify-content: space-between;
+}
+
+#gamecontainer .blocks .block{
+	width: 30%;
+	height: 100px;
+	text-align: center;
+	display: inline-block;
+    padding-top: 10px;
+}
+
+#gamecontainer .blocks .block img{
+	max-height: 100%;
+	min-width: 0;
+	height: 80px;
+	vertical-align: middle;
+}
+
+.game .action, .game .numbers{
+	text-align: center;
+	position: absolute;
+	bottom: 65px;
+	width: 100%;
+}
+.game .numbers{
+	display: flex;
+	justify-content: center;
+}
+.game .numbers .score, .game .numbers .time{
+	width: 30%;
+	height: 50px;
+	background: url('../img/score-bg.png')  50% no-repeat;
+	background-size: contain;
+	font-size: 28px;
+	color: #fff;
+	line-height: 50px;
+}
+ .game .numbers .time span{
+	font-size: 14px;
+ }
+
+.game .btns .start{
+	background: url('../img/start-button.png');
+	width: 140px;
+	height: 45px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	color: rgba(255, 255, 255, 0);
+	margin: 0 auto;
+}
+
+#rules img{
+	max-width: 100%;
+}
