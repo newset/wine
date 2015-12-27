@@ -125,8 +125,15 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 
 		$scope.start = function(){
 			// 更新当前状态 根据微信
-			$scope.game.start();
+			var register = $scope.show('templates/modals/info.html', {});
+			register.closePromise.then(function(data){
+				$scope.game.start();
 
+				$scope.startTimer();
+			})
+		}
+
+		$scope.startTimer = function(){
 			// timer
 			var timer = $interval(function(){
 				if($scope.game.time > 0) 
@@ -134,7 +141,7 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 
 				$interval.cancel(timer);
 				// 显示结果
-				var dialog = $scope.show('score', {score: $scope.game.score});
+				var dialog = $scope.show('templates/modals/score.html', {score: $scope.game.score});
 
 				dialog.closePromise.then(function(data){
 					$scope.initGame();
@@ -144,13 +151,13 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 						
 					};
 				});
-			}, 1000)
+			}, 1000);
 		}
 
 		$scope.show = function(template, data){
 
 			return ngDialog.open({ 
-				template: 'templates/modals/score.html' ,
+				template: template ,
 				closeByDocument: false,
 				className: 'ngdialog-theme-flat ngdialog-theme-custom',
 				showClose: false, 

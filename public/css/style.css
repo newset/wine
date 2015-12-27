@@ -43,8 +43,8 @@ body{
 	top: 130px;
 	display: flex;
 	flex-wrap: wrap;
-	height: 300;
-	padding: 0 40px 0px 30px;
+	height: 310px;
+	padding: 0 50px 0px 45px;
 	box-sizing: border-box;
 	width: 100%;
 	justify-content: space-between;
@@ -55,7 +55,7 @@ body{
 	height: 100px;
 	text-align: center;
 	display: inline-block;
-    padding-top: 10px;
+    padding-top: 7px;
     cursor: pointer;
 }
 
@@ -103,20 +103,20 @@ body{
 	max-width: 100%;
 }
 
-.score.modal img{
+.modal img{
 	min-width: 300px;
     width: 95%;
 }
-.score .score-contianer{
+.modal .modal-contianer{
 	position: relative;
     text-align: center;
 }
-.score .score-contianer .btns{
+.modal .modal-contianer .btns{
 	position: absolute;
 	bottom: 80px;
 	width: 100%;
 }
-.score .btn{
+.modal .btn{
 	color: rgba(0, 0, 0, 0);
 	background-repeat: no-repeat;
 	background-size: contain;
@@ -142,4 +142,10 @@ body{
 	background-image: url('../img/btns/share.png');
 	height: 55px;
 	font-size: 18px;
+}
+
+.register .register-btn{
+	height: 50px;
+    width: 155px;
+    margin-bottom: 14px;
 }
