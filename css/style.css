@@ -26,6 +26,7 @@ body{
 #gamecontainer{
 	position: relative;
 	height: 620px;
+	text-align: center;
 }
 
 #gamecontainer .block{
@@ -33,17 +34,16 @@ body{
 	width: 40px;
 }
 
-#gamecontainer img{
-	max-width: 100%;
-	min-width: 100%;
+#gamecontainer img.board{
+	width: 350px;
 }
 
 #gamecontainer .blocks{
 	position: absolute;
-	top: 142px;
+	top: 130px;
 	display: flex;
 	flex-wrap: wrap;
-	height: 350px;
+	height: 300;
 	padding: 0 40px 0px 30px;
 	box-sizing: border-box;
 	width: 100%;
@@ -69,7 +69,7 @@ body{
 .game .action, .game .numbers{
 	text-align: center;
 	position: absolute;
-	bottom: 65px;
+	bottom: 100px;
 	width: 100%;
 }
 .game .numbers{
