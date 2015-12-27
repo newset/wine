@@ -125,7 +125,6 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 
 		$scope.start = function(){
 			// 更新当前状态 根据微信
-
 			$scope.game.start();
 
 			// timer
@@ -140,10 +139,10 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 		}
 
 		$scope.show = function(template, data){
-			alert('your score: '+ $scope.game.score);
 			ngDialog.open({ 
 				template: 'templates/modals/score.html' ,
-				closeByDocument: false
+				closeByDocument: false,
+				className: 'ngdialog-theme-flat ngdialog-theme-custom'
 			});
 		}
 
