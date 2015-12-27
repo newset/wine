@@ -132,17 +132,29 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 				if($scope.game.time > 0) 
 					return $scope.game.time -- 
 
-				// 显示结果
-				$scope.show('score', $scope.game.score);
 				$interval.cancel(timer);
+				// 显示结果
+				var dialog = $scope.show('score', {score: $scope.game.score});
+
+				dialog.closePromise.then(function(data){
+					$scope.initGame();
+
+					if (data.value == 'share') {
+						//显示分享
+						
+					};
+				});
 			}, 1000)
 		}
 
 		$scope.show = function(template, data){
-			ngDialog.open({ 
+
+			return ngDialog.open({ 
 				template: 'templates/modals/score.html' ,
 				closeByDocument: false,
-				className: 'ngdialog-theme-flat ngdialog-theme-custom'
+				className: 'ngdialog-theme-flat ngdialog-theme-custom',
+				showClose: false, 
+				data: data
 			});
 		}
 

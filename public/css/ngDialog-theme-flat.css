@@ -91,12 +91,17 @@
   line-height: 1.5em;
   margin: 0 auto;
   max-width: 100%;
-  padding: 2em 2em 3em;
+  /*padding: 2em 2em 3em;*/
+  height: 100%;
   position: relative;
   -webkit-transform-style: preserve-3d;
   -ms-transform-style: preserve-3d;
   transform-style: preserve-3d;
   width: 600px;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .ngdialog.ngdialog-theme-flat .ngdialog-close {

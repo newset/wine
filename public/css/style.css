@@ -104,5 +104,42 @@ body{
 }
 
 .score.modal img{
-	width: 300px;
+	min-width: 300px;
+    width: 95%;
+}
+.score .score-contianer{
+	position: relative;
+    text-align: center;
+}
+.score .score-contianer .btns{
+	position: absolute;
+	bottom: 80px;
+	width: 100%;
+}
+.score .btn{
+	color: rgba(0, 0, 0, 0);
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-color: transparent;
+	background-position-x: 50%;
+}
+
+.score .digit{
+    position: absolute;
+    left: 48%;
+    top: 75px;
+    font-size: 27px;
+    color: #fff;
+}
+
+.score .play.btn{
+	background-image: url('../img/btns/play.png');
+	height: 50px;
+	font-size: 26px;
+}
+
+.score .share.btn{
+	background-image: url('../img/btns/share.png');
+	height: 55px;
+	font-size: 18px;
 }
