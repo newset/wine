@@ -155,7 +155,6 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 		}
 
 		$scope.show = function(template, data){
-
 			return ngDialog.open({ 
 				template: template ,
 				closeByDocument: false,
@@ -163,6 +162,12 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 				showClose: false, 
 				data: data
 			});
+		}
+
+		$scope.myscore = function(){
+			// 获取数据
+			
+			$scope.show('templates/modals/my.html', {score: 30});
 		}
 
 		$scope.choose = function(index){

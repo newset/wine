@@ -2,10 +2,6 @@ html, body{
 	height: 100%;
 }
 
-body{
-	background: url('../img/bg-repeat.jpg');
-}
-
 .btn{
 	height: 30px;
 	width: auto;
@@ -13,19 +9,23 @@ body{
 	cursor: pointer;
 }
 
+.wrapper{
+	background: url('../img/bg-repeat.jpg');
+}
+
 .grid{
 	height: 100%;
 }
 
 .game{
-	background-color: #999;
 	background-image: url('../img/bg.jpg');
+	background-repeat-y: no-repeat;
 	background-size: contain;
 }
 
 #gamecontainer{
 	position: relative;
-	height: 620px;
+	height: 520px;
 	text-align: center;
 }
 
@@ -69,7 +69,7 @@ body{
 .game .action, .game .numbers{
 	text-align: center;
 	position: absolute;
-	bottom: 100px;
+	bottom: 4px;
 	width: 100%;
 }
 .game .numbers{
@@ -115,6 +115,8 @@ body{
 	position: absolute;
 	bottom: 80px;
 	width: 100%;
+	display: flex;
+	justify-content: center;
 }
 .modal .btn{
 	color: rgba(0, 0, 0, 0);
@@ -138,14 +140,32 @@ body{
 	font-size: 26px;
 }
 
+.score .rank.btn{
+	background-image: url('../img/btns/rank-btn.png');
+	height: 50px;
+	font-size: 26px;
+}
+
 .score .share.btn{
 	background-image: url('../img/btns/share.png');
 	height: 55px;
 	font-size: 18px;
+	margin-right: 10px;
 }
 
 .register .register-btn{
 	height: 50px;
     width: 155px;
     margin-bottom: 14px;
+}
+.rank, .rules{
+	text-align: center;
+	padding-top: 45px;
+}
+.rank .btns{
+    display: flex;
+    padding: 10px 30px;
+}
+.rank img, .rules img{
+	max-width: 95%;
 }
