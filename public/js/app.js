@@ -7,7 +7,8 @@
 		var _name = name,
 			_timer = null,
 			_instance = [],
-			_res = res;
+			_res = res, 
+			starter = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 		var doms = {
 			container: '#'+name+'gamecontainer',
@@ -15,16 +16,11 @@
 		}
 
 		this.init = function(){
-			this.matrix = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 			this.score = 0;
 			this.time = _res.timeLimit;
-			_.each(this.matrix, function(block, index){
-				var show = _.random(0, _res.blocks.length-1);
-				this.matrix[index] = _res.blocks[show];
-			}.bind(this));
-
 			this.status = undefined;
-			this.matrix[_.random(0, 8)] = _res.defaut;
+
+			this.matrix = this.generate(starter);
 		}
 
 		this.start = function(timer, target){
@@ -48,7 +44,14 @@
 		}
 
 		this.generate = function(metrix) {
+			var m = metrix
+			_.each(m, function(block, index){
+				var show = _.random(0, _res.blocks.length-1);
+				m[index] = _res.blocks[show];
+			}.bind(this));
 
+			m[_.random(0, 8)] = _res.defaut;
+			return m;
 		}
 
 		this.finish = function(target) {
@@ -57,8 +60,10 @@
 
 		this.choose = function(index){
 			var correct = this.matrix[index] == _res.defaut;
-			if (correct) {
+			if (correct && this.time > 0 && this.status == 'started') {
+				this.score+=_res.point;
 
+				this.matrix = this.generate(starter);
 			};
 			return correct;
 		}
@@ -79,7 +84,7 @@
 *
 * Description
 */
-angular.module('wine', ['ui.router'])
+angular.module('wine', ['ui.router', 'ngDialog'])
 	.run(['$rootScope', function ($rootScope) {
 		
 	}])
@@ -101,7 +106,7 @@ angular.module('wine', ['ui.router'])
 				templateUrl: 'templates/rules.html'
 			})
 	}])
-	.controller('Game', function($scope, $interval){
+	.controller('Game', function($scope, $interval, ngDialog){
 		$scope.res = {
 			url: 'img/blocks/',
 			blocks: ['001', '002', '003', '004', '005', '006'],
@@ -111,10 +116,16 @@ angular.module('wine', ['ui.router'])
 			timeLimit: 3
 		};
 
-		$scope.game = new game('wine', $scope.res);
-		$scope.game.init();
+		$scope.initGame = function(){
+			$scope.game = new game('wine', $scope.res);
+			$scope.game.init();
+		}
+
+		$scope.initGame();
 
 		$scope.start = function(){
+			// 更新当前状态 根据微信
+
 			$scope.game.start();
 
 			// timer
@@ -123,7 +134,17 @@ angular.module('wine', ['ui.router'])
 					return $scope.game.time -- 
 
 				// 显示结果
+				$scope.show('score', $scope.game.score);
+				$interval.cancel(timer);
 			}, 1000)
+		}
+
+		$scope.show = function(template, data){
+			alert('your score: '+ $scope.game.score);
+			ngDialog.open({ 
+				template: 'templates/modals/score.html' ,
+				closeByDocument: false
+			});
 		}
 
 		$scope.choose = function(index){

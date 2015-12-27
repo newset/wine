@@ -102,3 +102,7 @@ body{
 #rules img{
 	max-width: 100%;
 }
+
+.score.modal img{
+	width: 300px;
+}

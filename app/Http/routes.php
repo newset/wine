@@ -14,3 +14,13 @@
 $app->get('/', function () use ($app) {
     return $app->welcome();
 });
+
+$app->get('/rank', function () {
+    return 'Hello World';
+});
+
+$app->post('/user', function () {
+
+	
+    return 'Hello World';
+});
