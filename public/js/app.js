@@ -57,6 +57,9 @@
 
 		this.choose = function(index){
 			var correct = this.matrix[index] == _res.defaut;
+			if (correct) {
+
+			};
 			return correct;
 		}
 
@@ -98,13 +101,14 @@ angular.module('wine', ['ui.router'])
 				templateUrl: 'templates/rules.html'
 			})
 	}])
-	.controller('Game', function($scope){
+	.controller('Game', function($scope, $interval){
 		$scope.res = {
 			url: 'img/blocks/',
 			blocks: ['001', '002', '003', '004', '005', '006'],
 			defaut: 'default',
 			extension: '.png',
-			timeLimit: 90
+			point: 2,
+			timeLimit: 3
 		};
 
 		$scope.game = new game('wine', $scope.res);
@@ -112,6 +116,14 @@ angular.module('wine', ['ui.router'])
 
 		$scope.start = function(){
 			$scope.game.start();
+
+			// timer
+			var timer = $interval(function(){
+				if($scope.game.time > 0) 
+					return $scope.game.time -- 
+
+				// 显示结果
+			}, 1000)
 		}
 
 		$scope.choose = function(index){
