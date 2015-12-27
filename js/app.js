@@ -29,10 +29,14 @@
 
 		this.start = function(timer, target){
 			this.status = 'started';
+
+			// start timer
 		}
 
 		this.pause = function(timer, target) {
 			this.status = 'pause';
+
+			// stop timer
 		}
 
 		this.reload = function(target) {
@@ -49,6 +53,11 @@
 
 		this.finish = function(target) {
 			
+		}
+
+		this.choose = function(index){
+			var correct = this.matrix[index] == _res.defaut;
+			return correct;
 		}
 
 		return this;
@@ -103,6 +112,10 @@ angular.module('wine', ['ui.router'])
 
 		$scope.start = function(){
 			$scope.game.start();
+		}
+
+		$scope.choose = function(index){
+			$scope.game.choose(index);
 		}
 	})
 	

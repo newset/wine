@@ -2,7 +2,7 @@
     <div id="gamecontainer">
         <img src="img/board.png" alt="">
         <div class="blocks">
-            <div class="block" ng-repeat="block in game.matrix track by $index">
+            <div class="block" ng-repeat="block in game.matrix track by $index" ng-click="choose($index)">
                 <img ng-src="{{res.url + block + res.extension}}" alt="">
             </div>
         </div>
