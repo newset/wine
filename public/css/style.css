@@ -21,7 +21,7 @@ html, body{
 .game{
 	background-image: url('../img/bg.jpg');
 	background-repeat-y: no-repeat;
-	background-size: contain;
+	background-size: cover;
 	height: 100%;
 }
 
