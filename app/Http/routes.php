@@ -16,11 +16,17 @@ $app->get('/', function () use ($app) {
 });
 
 $app->get('/rank', function () {
-    return 'Hello World';
+	$limit = Input::has('limit') ? Input::get('limit') : 0;
+
+    $builder = DB::table('users')->orderBy('score', 'desc')
+    if ($limit) {
+    	return $builder->take($limit);
+    }else{
+    	return $builder->get();
+    }
 });
 
 $app->post('/user', function () {
-
 	
     return 'Hello World';
 });
