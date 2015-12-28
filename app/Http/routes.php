@@ -2,23 +2,34 @@
 
 /*
 |--------------------------------------------------------------------------
-| Application Routes
+| Routes File
 |--------------------------------------------------------------------------
 |
-| Here is where you can register all of the routes for an application.
-| It is a breeze. Simply tell Lumen the URIs it should respond to
-| and give it the Closure to call when that URI is requested.
+| Here is where you will register all of the routes in an application.
+| It's a breeze. Simply tell Laravel the URIs it should respond to
+| and give it the controller to call when that URI is requested.
 |
 */
 
-$app->get('/', function () use ($app) {
-    return $app->welcome();
+Route::get('/', function () {
+    return view('welcome');
 });
 
-$app->get('/rank', function () {
-	$limit = Input::has('limit') ? Input::get('limit') : 0;
+/*
+|--------------------------------------------------------------------------
+| Application Routes
+|--------------------------------------------------------------------------
+|
+| This route group applies the "web" middleware group to every route
+| it contains. The "web" middleware group is defined in your HTTP
+| kernel and includes session state, CSRF protection, and more.
+|
+*/
 
-    $builder = DB::table('users')->orderBy('score', 'desc')
+Route::get('/rank', function (Request $req) {
+	$limit = $req->get('limit') ? $req->get('limit') : 0;
+    $builder = DB::table('users')->orderBy('score', 'desc');
+
     if ($limit) {
     	return $builder->take($limit);
     }else{
@@ -26,8 +37,7 @@ $app->get('/rank', function () {
     }
 });
 
-$app->post('/user', function () {
-	
+Route::post('/user', function () {
     return 'Hello World';
 });
 
