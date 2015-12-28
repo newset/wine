@@ -11,6 +11,7 @@ html, body{
 
 .wrapper{
 	background: url('../img/bg-repeat.jpg');
+	height: 100%;
 }
 
 .grid{
@@ -19,14 +20,17 @@ html, body{
 
 .game{
 	background-image: url('../img/bg.jpg');
-	background-repeat: no-repeat;
-	background-size: contain;
+	background-repeat-y: no-repeat;
+	background-size: cover;
+	height: 100%;
 }
 
 #gamecontainer{
 	position: relative;
 	height: 520px;
 	text-align: center;
+	padding-top: 118px;
+	box-sizing: border-box;
 }
 
 #gamecontainer .block{
@@ -35,28 +39,34 @@ html, body{
 }
 
 #gamecontainer img.board{
-	width: 350px;
+	width: 320px;
+	position: absolute;
+	left: calc(50% - 160px);
+	z-index: 0;
+	top: 0px;
 }
 
 #gamecontainer .blocks{
-	position: absolute;
-	top: 130px;
+	/* position: absolute; */
+	/* top: 115px; */
 	display: flex;
 	flex-wrap: wrap;
-	height: 310px;
-	padding: 0 50px 0px 45px;
+	height: 290px;
 	box-sizing: border-box;
-	width: 100%;
-	justify-content: space-between;
+	width: 280px;
+	justify-content: space-around;
+	margin: 0 auto;
+	z-index: 10;
+	position: relative;
 }
 
 #gamecontainer .blocks .block{
 	width: 30%;
-	height: 100px;
+	height: 30%;
 	text-align: center;
 	display: inline-block;
-    padding-top: 7px;
-    cursor: pointer;
+	padding-top: 7px;
+	cursor: pointer;
 }
 
 #gamecontainer .blocks .block img{
@@ -68,8 +78,8 @@ html, body{
 
 .game .action, .game .numbers{
 	text-align: center;
-	position: absolute;
-	bottom: 4px;
+	position: relative;
+	margin-top: 20px;
 	width: 100%;
 }
 .game .numbers{
