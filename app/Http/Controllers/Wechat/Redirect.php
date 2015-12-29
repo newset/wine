@@ -23,7 +23,9 @@ class Redirect extends Controller {
         $url = $this->getTokenURI($code);
         $res = Requests::get($url);
         $response = json_decode($res->body, true);
+        
         Cache::put('wechat:auth:access_token', $response['access_token'], intval($response['expires_in']) / 60 - 1);
+        Cache::put('wechat:auth:openid', $response['openid'], intval($response['expires_in']) / 60 - 1);
 
         if($response['scope'] == 'snsapi_userinfo') {
             $userinfo = $this->getUserInfo($response['access_token'],$response['openid']);

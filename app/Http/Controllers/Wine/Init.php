@@ -2,17 +2,17 @@
 	namespace App\Http\Controllers\Wine;
 
 use Carbon\Carbon;
-use App\Http\Controllers\Controller;
-use Requests;
+use App\Http\Controllers\Wechat\Controller;
+use Requests, App\Models\User;
+use Cache;
 
 /**
 * 		
 */
 class Init extends Controller
 {
-	
 	function index()
 	{
-		return '123';
+		return [User::all(), $this->openid];
 	}
 }
