@@ -31,6 +31,16 @@
                 return navigator.userAgent.toLowerCase().match(/MicroMessenger/i) == 'micromessenger';
             }
 
+            function getParameterByName(name) {
+                name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+                var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                    results = regex.exec(location.search);
+                return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+            }
+            if (getParameterByName('openid')) {
+                localStorage.openid = getParameterByName('openid');
+            }
+
             if (!localStorage.openid && isWechat()) {
                 location.href= location.origin + '/wechat/auth';
             }
