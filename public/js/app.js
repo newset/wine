@@ -44,13 +44,14 @@
 		}
 
 		this.generate = function(metrix) {
-			var m = metrix
+			var m = metrix,
+				blocks = _.sample(_.range(0, 20), m.length);
+
 			_.each(m, function(block, index){
-				var show = _.random(0, _res.blocks.length-1);
-				m[index] = _res.blocks[show];
+				m[index] = _res.blocks[blocks[index]];
 			}.bind(this));
 
-			m[_.random(0, 8)] = _res.defaut;
+			m[_.random(0, m.length-1)] = _res.defaut+_.sample(_.range(1, _res.defautLenght));
 			return m;
 		}
 
@@ -59,7 +60,8 @@
 		}
 
 		this.choose = function(index){
-			var correct = this.matrix[index] == _res.defaut;
+			var match = this.matrix[index].match(_res.defaut), 
+				correct = match && match.length;
 			if (correct && this.time > 0 && this.status == 'started') {
 				this.score+=_res.point;
 
@@ -118,11 +120,12 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 	.controller('Game', function($scope, $interval, ngDialog, $rootScope, $http){
 		$scope.res = {
 			url: 'img/blocks/',
-			blocks: ['001', '002', '003', '004', '005', '006'],
-			defaut: 'default',
+			blocks: ['001', '002', '003', '004', '005', '006', '007', '008', '009', '010', '011', '012', '013', '014', '015', '016', '017', '018', '019', '020', '021'],
+			defaut: 'right/right-',
+			defautLenght: 10,
 			extension: '.png',
 			point: 10,
-			timeLimit: 3
+			timeLimit: 30
 		};
 
 		$scope.initGame = function(){
