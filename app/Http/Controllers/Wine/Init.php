@@ -12,13 +12,10 @@ use App\Models\Wechat\Openid;
 */
 class Init extends Controller
 {
-	function __construct() {
-		parent::__construct();
-	}
-
 	function index()
 	{
-		$user = Openid::where('openid', $this->openid)->first();
+		$this->user = Openid::where('openid', $this->openid)->first();
+		$user = $this->user;
 		return view('welcome')->with(compact('user'));
 	}
 
@@ -36,6 +33,14 @@ class Init extends Controller
 		$user->mobile = $data['mobile'];
 		$user->name = $data['name'];
 		$user->openid = $this->openid;
+		$user->save();
+		return $user;
+	}
+
+	public function postPlay()
+	{
+		$user = User::where('openid', $this->openid);
+		$user->score = Input::get('score');
 		$user->save();
 		return $user;
 	}

@@ -115,7 +115,7 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 				templateUrl: 'templates/rules.html'
 			})
 	}])
-	.controller('Game', function($scope, $interval, ngDialog, $rootScope){
+	.controller('Game', function($scope, $interval, ngDialog, $rootScope, $http){
 		$scope.res = {
 			url: 'img/blocks/',
 			blocks: ['001', '002', '003', '004', '005', '006'],
@@ -154,16 +154,25 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 
 				$interval.cancel(timer);
 				// 显示结果
-				var dialog = $scope.show('templates/modals/result.html', {score: $scope.game.score});
+				var url = baseUrl + '/api/play';
+				$http.post(url, {
+					score : $rootScope.me.user && $rootScope.me.user.score < $scope.game.score ? $scope.game.score : $rootScope.me.user.score
+				}).success(function(res){
+					$rootScope.me.user = res;
 
-				dialog.closePromise.then(function(data){
-					$scope.initGame();
+					var dialog = $scope.show('templates/modals/result.html', 
+						{score: $scope.game.score}
+					);
 
-					if (data.value == 'share') {
-						//显示分享
-						
-					};
-				});
+					dialog.closePromise.then(function(data){
+						$scope.initGame();
+						if (data.value == 'share') {
+							//显示分享
+							
+						};
+					});
+				})
+				
 			}, 1000);
 		}
 
