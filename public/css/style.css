@@ -47,8 +47,6 @@ html, body{
 }
 
 #gamecontainer .blocks{
-	/* position: absolute; */
-	/* top: 115px; */
 	display: flex;
 	flex-wrap: wrap;
 	height: 290px;
@@ -116,11 +114,11 @@ html, body{
 .modal img.modal-bg{
 	width: 300px;
 }
-.modal .modal-contianer{
+.modal .modal-container{
 	position: relative;
     text-align: center;
 }
-.modal .modal-contianer .btns{
+.modal .modal-container .btns{
 	position: absolute;
 	bottom: 80px;
 	width: 100%;
@@ -137,8 +135,8 @@ html, body{
 
 .score .digit{
     position: absolute;
-    left: 48%;
-    top: 75px;
+    left: 47%;
+    top: 63px;
     font-size: 27px;
     color: #fff;
 }
@@ -146,7 +144,7 @@ html, body{
 .score .play.btn{
 	background-image: url('../img/btns/play.png');
 	height: 50px;
-	font-size: 26px;
+	font-size: 21px;
 }
 
 .score .rank.btn{
@@ -157,8 +155,8 @@ html, body{
 
 .score .share.btn{
 	background-image: url('../img/btns/share.png');
-	height: 55px;
-	font-size: 18px;
+	height: 50px;
+	font-size: 14px;
 	margin-right: 10px;
 }
 
@@ -187,6 +185,7 @@ modal content
 .modal .modal-content{
 	position: absolute;
 	top: 70px;
+	left: calc(50% - 160px);
 }
 
 .modal .modal-content form input{
@@ -201,4 +200,18 @@ modal content
     background-color: #af130f;
     color: #fff;
     border: none;
+}
+
+.modal .modal-content form input::-webkit-input-placeholder{
+	color: #ddffff;
+}
+
+.modal .modal-container .close{
+	position: absolute;
+    width: 48px;
+    height: 47px;
+    top: 4px;
+    right: 46px;
+    border-radius: 50%;
+    color: rgba(0, 0, 0, 0);
 }
