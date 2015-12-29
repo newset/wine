@@ -20,13 +20,20 @@ class Init extends Controller
 
 	function index()
 	{
-		$user = User::where('openId', $this->openid)->first();
+		$user = Openid::where('openid', $this->openid)->first();
 		if (!$user) {
 			
 		}
 
 		$me = json_encode($user);
-
+		
 		return view('welcome')->with(compact('me', 'user'));
+	}
+
+	function test()
+	{
+		$user = Openid::where('openid', $this->openid)->first();
+
+		return view('welcome')->with(compact('user'));
 	}
 }

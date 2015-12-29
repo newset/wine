@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="css/ngDialog-theme-flat.css">
         <link rel="stylesheet" href="css/style.css">
         <script type="text/javascript">
-            window.userinfo = {{$me}}
+            window.userinfo = '{{ $user ? 'ok' : ''}}';
         </script>
     </head>
     <body>
@@ -43,7 +43,7 @@
                 localStorage.openid = getParameterByName('openid');
             }
 
-            if (!localStorage.openid && isWechat()) {
+            if (!localStorage.openid && isWechat() && userinfo != 'ok') {
                 location.href= location.origin + '/wechat/auth';
             }
         </script>

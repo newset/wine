@@ -9,7 +9,7 @@ namespace App\Http\Controllers\Wechat;
 
 use Illuminate\Routing\Controller as BaseController;
 use Request;
-use Requests;
+use Requests, Session;
 use Input;
 
 class Controller extends BaseController {
@@ -25,7 +25,8 @@ class Controller extends BaseController {
     public function __construct() {
         $this->app_id = env('WEIXIN_APP_ID');
         $this->app_secret = env('WEIXIN_APP_SECRET');
-        $this->openid = Input::cookie('_openid',null);
+        $this->openid = Input::cookie('_openid', 'oVwG5uGB48zM1mkHh7l2es6OuOHo');
+        session(['wechat_openid' => $this->openid]);
     }
 
     public function getAppId() {
