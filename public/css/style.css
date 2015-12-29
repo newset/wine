@@ -134,28 +134,52 @@ html, body{
 }
 
 .score .digit{
-    position: absolute;
-    left: 47%;
+	position: absolute;
+    left: calc(50% - 22px);
     top: 63px;
     font-size: 27px;
     color: #fff;
+    display: inline-block;
+    text-align: center;
+    width: 50px;
+}
+
+.score .score-primary-text{
+	position: absolute;
+    left: calc(50% - 28px);
+    width: 65px;
+    top: 120px;
+}
+.score .score-secondary-box {
+	width: 200px;
+    position: absolute;
+    left: calc(50% - 100px);
+    top: 170px;
+}
+.score .score-secondary-text {
+    width: 100%
+}
+
+.score .btns{
+	bottom: 50px!important;
 }
 
 .score .play.btn{
 	background-image: url('../img/btns/play.png');
-	height: 50px;
+	height: 38px;
 	font-size: 21px;
 }
 
 .score .rank.btn{
 	background-image: url('../img/btns/rank-btn.png');
-	height: 50px;
-	font-size: 26px;
+	height: 38px;
+	font-size: 21px;
+	margin-left: 10px;
 }
 
 .score .share.btn{
 	background-image: url('../img/btns/share.png');
-	height: 50px;
+	height: 38px;
 	font-size: 14px;
 	margin-right: 10px;
 }

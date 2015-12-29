@@ -85,8 +85,11 @@
 * Description
 */
 angular.module('wine', ['ui.router', 'ngDialog'])
-	.run(['$rootScope', function ($rootScope) {
-		
+	.run(['$rootScope', '$state', 'ngDialog', function ($rootScope, $state, ngDialog) {
+		$rootScope.go = function(state){
+			$state.go(state);
+			ngDialog.closeAll();
+		}
 	}])
 	.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 		$urlRouterProvider.otherwise('/');
@@ -141,7 +144,7 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 
 				$interval.cancel(timer);
 				// 显示结果
-				var dialog = $scope.show('templates/modals/score.html', {score: $scope.game.score});
+				var dialog = $scope.show('templates/modals/result.html', {score: $scope.game.score});
 
 				dialog.closePromise.then(function(data){
 					$scope.initGame();
@@ -174,4 +177,15 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 			$scope.game.choose(index);
 		}
 	})
+	.controller('Rank', ['$scope', 'ngDialog', '$state', function ($scope, ngDialog, $state) {
+		$scope.show = function(){
+			ngDialog.open({ 
+				template: 'templates/modals/score.html',
+				closeByDocument: false,
+				className: 'ngdialog-theme-flat ngdialog-theme-custom',
+				showClose: false, 
+				data: data
+			});
+		}
+	}])
 	

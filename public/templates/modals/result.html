@@ -1,0 +1,15 @@
+<div class="score modal">
+	<div class="modal-container">
+		<img src="img/result.png" alt="" class="modal-bg">
+
+		<span class="digit">{{ngDialogData.score}}</span>
+		<img src="img/this-score-text.png" alt="" class="score-primary-text">
+		<div class="score-secondary-box">
+			<img src="img/highest-score.png" alt="" class="score-secondary-text">
+		</div>
+		<div class="btns">
+			<button type="button" class="play btn" ng-click="closeThisDialog('play')">再玩一次</button>
+			<button type="button" class="rank btn" ng-click="go('rank')">查看排名</button>
+		</div>
+	</div>
+</div>
