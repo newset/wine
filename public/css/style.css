@@ -113,9 +113,8 @@ html, body{
 	max-width: 100%;
 }
 
-.modal img{
-	min-width: 300px;
-    width: 95%;
+.modal img.modal-bg{
+	width: 300px;
 }
 .modal .modal-contianer{
 	position: relative;
@@ -165,8 +164,10 @@ html, body{
 
 .register .register-btn{
 	height: 50px;
-    width: 155px;
-    margin-bottom: 14px;
+	width: 155px;
+	margin-bottom: 14px;
+	background: url('../img/btns/register-btn.png') 50% no-repeat;
+	background-size: contain;
 }
 .rank, .rules{
 	text-align: center;
@@ -178,4 +179,26 @@ html, body{
 }
 .rank img, .rules img{
 	max-width: 95%;
+}
+
+/*
+modal content
+ */
+.modal .modal-content{
+	position: absolute;
+	top: 70px;
+}
+
+.modal .modal-content form input{
+    width: 74%;
+    max-width: 200px;
+    margin: 15px auto;
+    font-size: 14px;
+    height: 50px;
+    line-height: 50px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #af130f;
+    color: #fff;
+    border: none;
 }
