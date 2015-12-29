@@ -198,9 +198,26 @@ html, body{
 .rank .btns{
     display: flex;
     padding: 10px 30px;
+    text-align: center;
+    justify-content: center;
 }
 .rank img, .rules img{
 	max-width: 95%;
+}
+
+#rules{
+	position: relative;
+}
+
+#rules .btns{
+	position: absolute;
+	bottom: 10px;
+	text-align: center;
+	width: 100%;
+}
+
+#rules .btns a img, #rank .btns a img{
+	height: 50px;
 }
 
 /*

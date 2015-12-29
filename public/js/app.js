@@ -102,7 +102,8 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 			})
 			.state('rank', {
 				url: '/rank',
-				templateUrl: 'templates/rank.html'
+				templateUrl: 'templates/rank.html',
+				controller: 'Rank'
 			})
 			.state('rules', {
 				url: '/rules',
@@ -178,7 +179,7 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 		}
 	})
 	.controller('Rank', ['$scope', 'ngDialog', '$state', function ($scope, ngDialog, $state) {
-		$scope.show = function(){
+		$scope.show = function(data){
 			ngDialog.open({ 
 				template: 'templates/modals/score.html',
 				closeByDocument: false,
