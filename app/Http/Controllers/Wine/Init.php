@@ -24,7 +24,7 @@ class Init extends Controller
 		if (!$user) {
 			
 		}
-		dd(Openid::where('openid', $this->openid)->first());
+
 		$me = json_encode($user);
 
 		return view('welcome')->with(compact('me', 'user'));
