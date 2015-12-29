@@ -113,7 +113,7 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 			defaut: 'default',
 			extension: '.png',
 			point: 10,
-			timeLimit: 90
+			timeLimit: 3
 		};
 
 		$scope.initGame = function(){
@@ -141,7 +141,7 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 
 				$interval.cancel(timer);
 				// 显示结果
-				var dialog = $scope.show('templates/modals/score.html', {score: $scope.game.score});
+				var dialog = $scope.show('templates/modals/result.html', {score: $scope.game.score});
 
 				dialog.closePromise.then(function(data){
 					$scope.initGame();
