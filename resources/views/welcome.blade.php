@@ -12,6 +12,9 @@
         <link rel="stylesheet" href="lib/ng-dialog/css/ngDialog-theme-default.css">
         <link rel="stylesheet" href="css/ngDialog-theme-flat.css">
         <link rel="stylesheet" href="css/style.css">
+        <script type="text/javascript">
+            window.userinfo = {{$me}}
+        </script>
     </head>
     <body>
         <div class="grid">

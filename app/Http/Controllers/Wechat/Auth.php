@@ -15,7 +15,7 @@ use Cache;
 class Auth extends Controller {
 
     public function index() {
-        $scope = Input::get('scope','snsapi_base');
+        $scope = Input::get('scope','snsapi_userinfo');
         $goto = Input::get('goto', 'http://test.blooplus.cn/');
         $state = Carbon::now()->format("YmdHi").mt_rand(1000,9999);
         Cache::put('wechat:state:'.$state, $goto, 5);

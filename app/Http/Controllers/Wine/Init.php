@@ -11,8 +11,20 @@ use Cache;
 */
 class Init extends Controller
 {
+	function __construct() {
+		parent::__construct();
+
+		$this->openid = 'oVwG5uGB48zM1mkHh7l2es6OuOHo';
+	}
+
 	function index()
 	{
-		return [User::all(), $this->openid];
+		$user = User::where('openId', $this->openid)->first();
+		if (!$user) {
+			
+		}
+		$me = json_encode($user);
+
+		return view('welcome')->with(compact('me', 'user'));
 	}
 }

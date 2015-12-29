@@ -58,7 +58,7 @@ class Controller extends BaseController {
         return $this->token_url.'?'.http_build_query($param);
     }
 
-    public function getUserInfo($access_token,$openid) {
+    public function getUserInfo($access_token, $openid) {
         $param = [
             'access_token' => $access_token,
             'openid' => $openid,
