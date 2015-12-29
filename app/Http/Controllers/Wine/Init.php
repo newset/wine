@@ -39,7 +39,7 @@ class Init extends Controller
 
 	public function postPlay()
 	{
-		$user = User::where('openid', $this->openid);
+		$user = User::where('openid', $this->openid)->first();
 		$user->score = Input::get('score');
 		$user->save();
 		return $user;

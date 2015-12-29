@@ -122,7 +122,7 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 			defaut: 'default',
 			extension: '.png',
 			point: 10,
-			timeLimit: 20
+			timeLimit: 3
 		};
 
 		$scope.initGame = function(){
