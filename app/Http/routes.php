@@ -41,6 +41,8 @@ Route::post('/user', function () {
     return 'Hello World';
 });
 
+Route::get('init', 'Wine\\Init@index');
+
 //微信网页授权
 Route::get("wechat/auth", ['as'=>'wx_auth', 'uses' => "Wechat\\Auth@index"]);
 Route::get("wechat/redirect", ['as'=>'wx_redirect', 'uses' => "Wechat\\Redirect@index"]);
