@@ -7,8 +7,8 @@ use App\Models\Wechat\Openid;
 
 class User extends Model
 {
-    public function openid()
-    {
-    	return $this->belongsTo(Openid::class, 'openid', 'openid');
-    }
+	protected $guarded = ['id'];
+
+	public $timestamps = false;
+
 }

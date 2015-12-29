@@ -8,6 +8,7 @@
 namespace App\Models\Wechat;
 use Illuminate\Database\Eloquent\Model;
 use DB;
+use App\Models\User;
 
 class Openid extends Model {
     protected $table = 'openid';
@@ -26,5 +27,10 @@ class Openid extends Model {
     public static function one($openid) {
         $query = DB::table('openid')->where('openid',$openid);
         return $query->first();
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'openid', 'openid');
     }
 }

@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="css/style.css">
         <script type="text/javascript">
             window.userinfo = '{{ $user ? 'ok' : ''}}';
+            window.baseUrl = '{{url('/')}}'
         </script>
     </head>
     <body>

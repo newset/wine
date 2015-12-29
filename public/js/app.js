@@ -85,11 +85,16 @@
 * Description
 */
 angular.module('wine', ['ui.router', 'ngDialog'])
-	.run(['$rootScope', '$state', 'ngDialog', function ($rootScope, $state, ngDialog) {
+	.run(['$rootScope', '$state', 'ngDialog', '$http', function ($rootScope, $state, ngDialog, $http) {
 		$rootScope.go = function(state){
 			$state.go(state);
 			ngDialog.closeAll();
 		}
+
+		var meUrl = baseUrl + '/api/me';
+		$http.get(meUrl).success(function(res){
+			$rootScope.me = res;
+		});
 	}])
 	.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 		$urlRouterProvider.otherwise('/');
@@ -110,7 +115,7 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 				templateUrl: 'templates/rules.html'
 			})
 	}])
-	.controller('Game', function($scope, $interval, ngDialog){
+	.controller('Game', function($scope, $interval, ngDialog, $rootScope){
 		$scope.res = {
 			url: 'img/blocks/',
 			blocks: ['001', '002', '003', '004', '005', '006'],
@@ -129,12 +134,16 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 
 		$scope.start = function(){
 			// 更新当前状态 根据微信
-			var register = $scope.show('templates/modals/info.html', {});
-			register.closePromise.then(function(data){
+			if (!$rootScope.me.user) {
+				var register = $scope.show('templates/modals/info.html', {}, 'Register');
+				register.closePromise.then(function(data){
+					$scope.game.start();
+					$scope.startTimer();
+				})
+			}else{
 				$scope.game.start();
-
 				$scope.startTimer();
-			})
+			};
 		}
 
 		$scope.startTimer = function(){
@@ -158,19 +167,22 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 			}, 1000);
 		}
 
-		$scope.show = function(template, data){
-			return ngDialog.open({ 
-				template: template ,
+		$scope.show = function(template, data, controller){
+			var config = { 
+				template: template,
 				closeByDocument: false,
 				className: 'ngdialog-theme-flat ngdialog-theme-custom',
 				showClose: false, 
 				data: data
-			});
+			};
+			if (controller) {
+				config.controller = controller;
+			};
+			return ngDialog.open(config);
 		}
 
 		$scope.myscore = function(){
 			// 获取数据
-			
 			$scope.show('templates/modals/my.html', {score: 30});
 		}
 
@@ -179,13 +191,27 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 		}
 	})
 	.controller('Rank', ['$scope', 'ngDialog', '$state', function ($scope, ngDialog, $state) {
-		$scope.show = function(data){
-			ngDialog.open({ 
+		$scope.show = function(data, controller){
+			var config = { 
 				template: 'templates/modals/score.html',
 				closeByDocument: false,
 				className: 'ngdialog-theme-flat ngdialog-theme-custom',
 				showClose: false, 
 				data: data
+			};
+			if (controller) {
+				config.controller = controller;
+			};
+			ngDialog.open(config);
+		}
+	}])
+	.controller('Register', ['$scope', '$http', function ($scope, $http) {
+		$scope.save = function(){
+			var url = baseUrl + '/api/info'
+			$http.post(url, $scope.user).success(function(res){
+				if (res) {
+					$scope.closeThisDialog('');
+				};
 			});
 		}
 	}])

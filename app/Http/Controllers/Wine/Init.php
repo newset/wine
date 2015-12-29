@@ -4,7 +4,7 @@
 use Carbon\Carbon;
 use App\Http\Controllers\Wechat\Controller;
 use Requests, App\Models\User;
-use Cache;
+use Cache, Input;
 use App\Models\Wechat\Openid;
 
 /**
@@ -14,26 +14,29 @@ class Init extends Controller
 {
 	function __construct() {
 		parent::__construct();
-
-		$this->openid = 'oVwG5uGB48zM1mkHh7l2es6OuOHo';
 	}
 
 	function index()
 	{
 		$user = Openid::where('openid', $this->openid)->first();
-		if (!$user) {
-			
-		}
-
-		$me = json_encode($user);
-		
-		return view('welcome')->with(compact('me', 'user'));
+		return view('welcome')->with(compact('user'));
 	}
 
-	function test()
+	function getMe()
 	{
-		$user = Openid::where('openid', $this->openid)->first();
+		$user = Openid::with('user')->where('openid', $this->openid)->first();
 
-		return view('welcome')->with(compact('user'));
+		return $user;
+	}
+
+	public function postInfo()
+	{
+		$user = User::firstOrNew(['openid' => $this->openid]);
+		$data = Input::only('mobile', 'name');
+		$user->mobile = $data['mobile'];
+		$user->name = $data['name'];
+		$user->openid = $this->openid;
+		$user->save();
+		return $user;
 	}
 }

@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'Wine\\Init@index');
-Route::get('/test', 'Wine\\Init@test');
+Route::controller('/api', 'Wine\\Init');
 
 /*
 |--------------------------------------------------------------------------
