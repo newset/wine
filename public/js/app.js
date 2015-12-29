@@ -199,7 +199,12 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 			$scope.game.choose(index);
 		}
 	})
-	.controller('Rank', ['$scope', 'ngDialog', '$state', function ($scope, ngDialog, $state) {
+	.controller('Rank', ['$scope', 'ngDialog', '$state', '$http', function ($scope, ngDialog, $state, $http) {
+		var url = baseUrl + '/api/top';
+		$http.get(url).success(function(res){
+			$scope.users = res;
+		});
+
 		$scope.show = function(data, controller){
 			var config = { 
 				template: 'templates/modals/score.html',

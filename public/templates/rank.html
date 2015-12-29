@@ -1,5 +1,11 @@
 <div class="rank" id="rank">
     <img src="img/rank.png" alt="">
+    <ul class="users">
+    	<li ng-repeat="user in users">
+    		{{user.name}}
+			{{user.score}}
+    	</li>
+    </ul>
     <div class="btns">
         <a href="" title="" ng-click="show()"><img src="img/btns/myscore.png" alt=""></a>
         <a href="#rules" title=""><img src="img/btns/see-rules.png" alt=""></a>

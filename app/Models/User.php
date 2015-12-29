@@ -11,4 +11,8 @@ class User extends Model
 
 	public $timestamps = false;
 
+	public function openid()
+    {
+        return $this->belongsTo('App\Models\Wechat\Openid', 'openid', 'openid');
+    }
 }

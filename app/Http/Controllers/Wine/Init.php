@@ -40,8 +40,18 @@ class Init extends Controller
 	public function postPlay()
 	{
 		$user = User::where('openid', $this->openid)->first();
+		if (Input::get('score') > $user->score) {
+			$user->created = date('Y-m-d h:i:s', now());
+		}
 		$user->score = Input::get('score');
 		$user->save();
 		return $user;
+	}
+
+	public function getTop()
+	{
+		$users = User::orderBy('score', 'desc')->with('openid')->take(10)->get();
+
+		return $users;
 	}
 }
