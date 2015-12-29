@@ -9,6 +9,7 @@ namespace App\Http\Controllers\Wechat;
 
 use Illuminate\Routing\Controller as BaseController;
 use Request;
+use Requests;
 use Input;
 
 class Controller extends BaseController {
