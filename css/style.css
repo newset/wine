@@ -135,26 +135,26 @@ html, body{
 
 .score .digit{
 	position: absolute;
-    left: calc(50% - 22px);
-    top: 63px;
-    font-size: 27px;
-    color: #fff;
-    display: inline-block;
-    text-align: center;
-    width: 50px;
+	left: calc(50% - 22px);
+	top: 75px;
+	font-size: 27px;
+	color: #fff;
+	display: inline-block;
+	text-align: center;
+	width: 50px;
 }
 
 .score .score-primary-text{
 	position: absolute;
-    left: calc(50% - 28px);
-    width: 65px;
-    top: 120px;
+	left: calc(50% - 28px);
+	width: 65px;
+	top: 140px;
 }
 .score .score-secondary-box {
 	width: 200px;
-    position: absolute;
-    left: calc(50% - 100px);
-    top: 170px;
+	position: absolute;
+	left: calc(50% - 100px);
+	top: 220px;
 }
 .score .score-secondary-text {
     width: 100%
