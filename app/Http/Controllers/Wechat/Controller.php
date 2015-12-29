@@ -36,7 +36,7 @@ class Controller extends BaseController {
     }
 
 
-    public function getAuthURI($redirect,$scope,$state) {
+    public function getAuthURI($redirect, $scope, $state) {
         $param = [
             'appid' => $this->app_id,
             'redirect_uri' => $redirect,

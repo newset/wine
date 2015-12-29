@@ -20,7 +20,7 @@ class Auth extends Controller {
         $state = Carbon::now()->format("YmdHi").mt_rand(1000,9999);
         Cache::put('wechat:state:'.$state, $goto, 5);
 
-        $url = $this->getAuthURI('http://www.blooplus.com/wechat/redirect', $scope, $state);
+        $url = $this->getAuthURI('http://test.blooplus.cn/wechat/redirect', $scope, $state);
 
         return redirect()->away($url);
     }
