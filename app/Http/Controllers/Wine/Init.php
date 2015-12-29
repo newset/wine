@@ -5,6 +5,7 @@ use Carbon\Carbon;
 use App\Http\Controllers\Wechat\Controller;
 use Requests, App\Models\User;
 use Cache;
+use App\Models\Wechat\Openid;
 
 /**
 * 		
@@ -23,6 +24,7 @@ class Init extends Controller
 		if (!$user) {
 			
 		}
+		dd(Openid::where('openid', $this->openid)->first());
 		$me = json_encode($user);
 
 		return view('welcome')->with(compact('me', 'user'));
