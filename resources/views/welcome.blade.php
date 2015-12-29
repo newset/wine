@@ -1,45 +1,48 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html ng-app="wine">
     <head>
-        <title>Laravel</title>
-
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-
-        <style>
-            html, body {
-                height: 100%;
-            }
-
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 96px;
-            }
-        </style>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+        <meta http-equiv="pragma" content="no-cache">
+        <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+        <meta http-equiv="expires" content="-1">
+        <title>酒窖真英雄</title>
+        <link rel="stylesheet" href="lib/normalize-css/normalize.css">
+        <link rel="stylesheet" href="lib/ng-dialog/css/ngDialog.css">
+        <link rel="stylesheet" href="lib/ng-dialog/css/ngDialog-theme-default.css">
+        <link rel="stylesheet" href="css/ngDialog-theme-flat.css">
+        <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Laravel 5</div>
+        <div class="grid">
+            <div ui-view class="wrapper">
+                
             </div>
         </div>
+        <script src="lib/jquery/dist/jquery.js"></script>
+        <script src="lib/underscore/underscore.js"></script>
+        <script type="text/javascript" src="lib/angular/angular.js"></script>
+        <script type="text/javascript" src="lib/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="lib/ng-dialog/js/ngDialog.js"></script>
+        <script src="js/app.js"></script>
+        <script type="text/javascript">
+            function isWechat() {
+                return navigator.userAgent.toLowerCase().match(/MicroMessenger/i) == 'micromessenger';
+            }
+
+            function getParameterByName(name) {
+                name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+                var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                    results = regex.exec(location.search);
+                return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+            }
+            if (getParameterByName('openid')) {
+                localStorage.openid = getParameterByName('openid');
+            }
+
+            if (!localStorage.openid && isWechat()) {
+                location.href= location.origin + '/wechat/auth';
+            }
+        </script>
     </body>
 </html>
