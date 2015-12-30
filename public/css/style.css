@@ -27,7 +27,7 @@ html, body{
 
 #gamecontainer{
 	position: relative;
-	height: 520px;
+	height: 490px;
 	text-align: center;
 	padding-top: 118px;
 	box-sizing: border-box;
@@ -113,6 +113,8 @@ html, body{
 
 .modal img.modal-bg{
 	width: 300px;
+	margin: 0 auto;
+	display: block;
 }
 .modal .modal-container{
 	position: relative;
@@ -120,7 +122,7 @@ html, body{
 }
 .modal .modal-container .btns{
 	position: absolute;
-	bottom: 80px;
+	bottom: 60px;
 	width: 100%;
 	display: flex;
 	justify-content: center;
@@ -135,13 +137,14 @@ html, body{
 
 .score .digit{
 	position: absolute;
-	left: calc(50% - 22px);
+	left: calc(50% - 17px);
 	top: 75px;
-	font-size: 27px;
+	/* font-size: 27px; */
 	color: #fff;
 	display: inline-block;
 	text-align: center;
 	width: 50px;
+	font-size: 40px;
 }
 
 .score .score-primary-text{
@@ -170,7 +173,6 @@ html, body{
 }
 
 .score .btns{
-	bottom: 50px!important;
 }
 
 .score .play.btn{
@@ -226,7 +228,10 @@ html, body{
 }
 
 #rules .btns a img, #rank .btns a img{
-	height: 50px;
+	height: 39px;
+	width: auto;
+	max-width: 100%;
+	margin-right: 10px;
 }
 
 /*
@@ -308,26 +313,42 @@ ol.users{
 .users .thumb {
     width: 61px;
     display: inline-block;
+    float: left;
 }
 
 .users .user span.score-text{
-    float: right;
+    position: absolute;
     display: inline-block;
     font-size: 34px;
     margin-right: 20px;
     color: #C62D2D;
     line-height: 60px;
+    right: -5px;
+    top: 19%;
 }
 
 ol.users li.user{
     padding: 10px 0px;
     border-bottom: 1px dotted #bbb;
+    position: relative;
 }
 
 ol.users li.user span.name{
 	display: inline-block;
-    line-height: 60px;
-    font-weight: bold;
-    vertical-align: top;
-    color: #5d320e;
+	line-height: 30px;
+	font-weight: bold;
+	vertical-align: top;
+	color: #5d320e;
+}
+
+ol.users li.user span.time{
+	font-size: 12px;
+	color: #999;
+}
+
+ol.users li.user div.texts{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	width: 85px;
 }

@@ -69,12 +69,13 @@
                     <div class="action btns" ng-hide="game.status && game.status == 'started'">
                         <input type="button" value="开始" class="start btn" ng-click="start()">
                     </div>
+                    <div style="text-align: center; margin-top: 25px;position:relative; z-index:2;">
+                        <a ui-sref="rank" style="display: block;">
+                            <img src="img/win-btn.png" alt="" style="width: 50%">
+                        </a>
+                    </div>
                 </div>
-                <div style="text-align: center">
-                    <a ui-sref="rank">
-                        <img src="img/win-btn.png" alt="" style="width: 50%">
-                    </a>
-                </div>
+                
             </div>
         </script>
         <script type="text/ng-template" id="templates/rules.html">
@@ -98,9 +99,13 @@
                         <div class="thumb">
                                <img ng-src="@{{user.openid.headimgurl}}" alt="">
                         </div> 
-                        <span ng-bind="user.name" class="name">
-                        </span>
-
+                        <div class="texts">
+                            <span class="name">
+                            @{{user.openid.nickname}}
+                            </span>
+                            <span class="time">@{{user.openid.created_at | limitTo: 10}}</span>
+                        </div>
+                        
                         <span ng-bind="user.score" class="score-text"></span>
                     </li>
                 </ol>
