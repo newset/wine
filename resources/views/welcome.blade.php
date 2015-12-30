@@ -8,8 +8,8 @@
         <meta http-equiv="expires" content="-1">
         <title>酒窖真英雄</title>
         <link rel="stylesheet" href="lib/normalize-css/normalize.css">
-        <link rel="stylesheet" href="lib/ng-dialog/css/ngDialog.css">
-        <link rel="stylesheet" href="lib/ng-dialog/css/ngDialog-theme-default.css">
+        <link rel="stylesheet" href="lib/ng-dialog/css/ngDialog.min.css">
+        <link rel="stylesheet" href="lib/ng-dialog/css/ngDialog-theme-default.min.css">
         <link rel="stylesheet" href="css/ngDialog-theme-flat.css">
         <link rel="stylesheet" href="css/style.css">
         <script type="text/javascript">
@@ -23,11 +23,11 @@
                 
             </div>
         </div>
-        <script src="lib/jquery/dist/jquery.js"></script>
-        <script src="lib/underscore/underscore.js"></script>
-        <script type="text/javascript" src="lib/angular/angular.js"></script>
-        <script type="text/javascript" src="lib/angular-ui-router/release/angular-ui-router.js"></script>
-        <script src="lib/ng-dialog/js/ngDialog.js"></script>
+        <script src="lib/jquery/dist/jquery.min.js"></script>
+        <script src="lib/underscore/underscore-min.js"></script>
+        <script type="text/javascript" src="lib/angular/angular.min.js"></script>
+        <script type="text/javascript" src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script src="lib/ng-dialog/js/ngDialog.min.js"></script>
         <script src="js/app.js"></script>
         <script type="text/javascript">
             function isWechat() {

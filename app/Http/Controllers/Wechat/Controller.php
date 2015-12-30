@@ -25,7 +25,7 @@ class Controller extends BaseController {
     public function __construct() {
         $this->app_id = env('WEIXIN_APP_ID');
         $this->app_secret = env('WEIXIN_APP_SECRET');
-        $this->openid = Input::cookie('_openid', 'oVwG5uGB48zM1mkHh7l2es6OuOHo');
+        $this->openid = Input::cookie('_openid', null);
         session(['wechat_openid' => $this->openid]);
     }
 

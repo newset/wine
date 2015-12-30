@@ -66,7 +66,12 @@
 				this.score+=_res.point;
 
 				this.matrix = this.generate(starter);
-			};
+			}
+
+			if (!correct && this.time > 0 && this.status == 'started') {
+				this.time - _res.error > 0 ? this.time = this.time - _res.error : this.time = 0;
+ 			}
+
 			return correct;
 		}
 
@@ -128,6 +133,7 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 			defautLenght: 10,
 			extension: '.png',
 			point: 10,
+			error: 5,
 			timeLimit: 90
 		};
 
@@ -165,9 +171,13 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 
 				$interval.cancel(timer);
 				// 显示结果
-				var url = baseUrl + '/api/play';
+				var url = baseUrl + '/api/play',
+					score = $scope.game.score;
+				if ($rootScope.me.user && $rootScope.me.user.score > $scope.game.score) {
+					score = $rootScope.me.user.score;
+				};
 				$http.post(url, {
-					score : $rootScope.me.user && $rootScope.me.user.score < $scope.game.score ? $scope.game.score : $rootScope.me.user.score
+					score : 
 				}).success(function(res){
 					$rootScope.me.user = res.user;
 					$rootScope.leftTimes = res.left;
@@ -207,7 +217,7 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 		}
 	})
 	.controller('Score', ['$scope', '$rootScope', function ($scope, $rootScope) {
-		$scope.score = $rootScope.me.user.score;
+		$scope.score = $rootScope.me.user.score || 0;
 	}])
 	.controller('Rank', ['$scope', 'ngDialog', '$state', '$http', function ($scope, ngDialog, $state, $http) {
 		var url = baseUrl + '/api/top';
