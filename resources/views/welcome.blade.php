@@ -11,23 +11,7 @@
         <link rel="stylesheet" href="lib/ng-dialog/css/ngDialog.min.css">
         <link rel="stylesheet" href="lib/ng-dialog/css/ngDialog-theme-default.min.css">
         <link rel="stylesheet" href="css/ngDialog-theme-flat.css">
-        <link rel="stylesheet" href="css/style.css?_=111">
-        <script>
-        var phoneWidth = parseInt(window.screen.width);
-        var phoneScale = phoneWidth/640;
-        var ua = navigator.userAgent;
-        if (/Android (\d+\.\d+)/.test(ua)){
-            var version = parseFloat(RegExp.$1);
-            if(version>2.3){
-                document.write('<meta name="viewport" content="width=640, minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
-            }else{
-                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
-            }
-        } else {
-            document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
-        }
-
-    </script>
+        <link rel="stylesheet" href="css/style.css">
         <script type="text/javascript">
             window.userinfo = '{{ $user ? 'ok' : ''}}';
             window.baseUrl = '{{url('/')}}'
@@ -64,11 +48,6 @@
                 location.href= location.origin + '/wechat/auth';
             }
         </script>
-        <script type="text/ng-template" id="templates/home.html">
-            <div class="home" ng-click="game($event)">
-
-            </div>
-        </script>
         <script type="text/ng-template" id="templates/game.html">
             <div class="game">
                 <div id="gamecontainer">
@@ -90,9 +69,9 @@
                     <div class="action btns" ng-hide="game.status && game.status == 'started'">
                         <input type="button" value="开始" class="start btn" ng-click="start()">
                     </div>
-                    <div style="text-align: center; margin-top: 25px;position: fixed; left: 49%;bottom: 0;z-index:999;margin-left: -135px;">
+                    <div style="text-align: center; margin-top: 25px;position:relative; z-index:2;">
                         <a ui-sref="rank" style="display: block;">
-                            <img src="img/win-btn.png" alt="" style="">
+                            <img src="img/win-btn.png" alt="" style="width: 50%">
                         </a>
                     </div>
                 </div>
@@ -100,10 +79,10 @@
             </div>
         </script>
         <script type="text/ng-template" id="templates/rules.html">
-            <div id="rules" ng-click="game()">
+            <div id="rules">
                 <img src="img/rules.jpg" alt="">
-                <div class="btns" style="display:none;">
-                    <a ui-sref="game" title="">
+                <div class="btns">
+                    <a ui-sref="home" title="">
                         <img src="img/btns/start.png" alt="">
                     </a>
                     <a ui-sref="rank" title="">

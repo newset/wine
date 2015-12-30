@@ -51,8 +51,7 @@
 				m[index] = _res.blocks[blocks[index]];
 			}.bind(this));
 
-			//m[_.random(0, m.length-1)] = _res.defaut+_.random(1, _res.point);
-			m[_.random(0, m.length-1)] = _res.defaut+8;
+			m[_.random(0, m.length-1)] = _res.defaut+_.sample(_.range(1, _res.defautLenght));
 			return m;
 		}
 
@@ -71,12 +70,6 @@
 
 			if (!correct && this.time > 0 && this.status == 'started') {
 				this.time - _res.error > 0 ? this.time = this.time - _res.error : this.time = 0;
- 			}
-
- 			if(correct) {
-
- 			} else {
- 				$("body").animate({"margin-left":"-50px"},50).animate({"margin-left":"0px"},50).animate({"margin-right":"-50px"},50).animate({"margin-right":"0px"},50);
  			}
 
 			return correct;
@@ -125,8 +118,8 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 		$urlRouterProvider.otherwise('/');
 
 		$stateProvider
-			.state('game', {
-				url: '/game',
+			.state('home', {
+				url: '/',
 				templateUrl: 'templates/game.html',
 				controller: 'Game'
 			})
@@ -139,40 +132,7 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 				url: '/rules',
 				templateUrl: 'templates/rules.html'
 			})
-			.state('home',{
-				url : '/',
-				templateUrl: 'templates/home.html',
-				controller: 'Home'
-			})
-	}]).controller('Home',function($scope,$state,ngDialog){
-			$scope.game = function($event){
-				console.log($event);
-				if($event.offsetX > 380) {
-					$scope.show('templates/rules.html',null,'Rule');
-				} else {
-					$state.go('game');
-				}
-			};
-
-			$scope.show = function(template, data, controller){
-			var config = { 
-				template: template,
-				closeByDocument: false,
-				className: 'ngdialog-theme-flat ngdialog-theme-custom',
-				showClose: false, 
-				data: data
-			};
-			if (controller) {
-				config.controller = controller;
-			};
-			return ngDialog.open(config);
-		}
-	}).controller('Rule',function($scope,$state,ngDialog){
-		$scope.game = function() {
-			ngDialog.closeAll();
-			//$state.go('game');
-		};
-	})
+	}])
 	.controller('Game', function($scope, $interval, ngDialog, $rootScope, $http, $rootScope){
 		$scope.res = {
 			url: 'img/blocks/',
@@ -193,6 +153,7 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 		$scope.initGame();
 
 		$scope.start = function(){
+			
 			if ($rootScope.leftTimes<=0) {
 				$scope.show('templates/modals/no-left.html');
 				return;
