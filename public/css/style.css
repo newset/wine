@@ -392,6 +392,7 @@ ol.users li.user div.texts{
 	height: 100%;
 	display: flex;
 	z-index: 1;
+	overflow: hidden;
 }
 
 .intro .btns{
