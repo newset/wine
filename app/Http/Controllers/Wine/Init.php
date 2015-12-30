@@ -112,4 +112,11 @@ class Init extends Controller
 		$dt = new Carbon($date);
 		return $dt->isToday();
 	}
+
+	public function getAll()
+	{
+		$users = User::with('open')->orderBy('score', 'desc')->paginate(5);
+		// return $users;
+		return view('users')->with(compact('users'));
+	}
 }

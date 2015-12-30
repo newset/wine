@@ -138,7 +138,7 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 			url: 'img/blocks/',
 			blocks: ['001', '002', '003', '004', '005', '006', '007', '008', '009', '010', '011', '012', '013', '014', '015', '016', '017', '018', '019', '020', '021'],
 			defaut: 'right/right-',
-			defautLenght: 10,
+			defautLenght: 1,
 			extension: '.png',
 			point: 10,
 			error: 5,

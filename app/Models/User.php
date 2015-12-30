@@ -15,4 +15,9 @@ class User extends Model
     {
         return $this->belongsTo('App\Models\Wechat\Openid', 'openid', 'openid');
     }
+
+    public function open()
+    {
+        return $this->belongsTo('App\Models\Wechat\Openid', 'openid', 'openid');
+    }
 }
