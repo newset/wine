@@ -76,7 +76,8 @@
                         </a>
                     </div>
                 </div>
-                
+                <audio src="1.mp3" autoplay="autoplay" loop="loop">
+                </audio>
             </div>
         </script>
         <script type="text/ng-template" id="templates/rules.html">

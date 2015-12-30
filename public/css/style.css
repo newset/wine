@@ -1,5 +1,4 @@
-html, body{
-	height: 100%;
+html, body{height: 100%;
 }
 
 .btn{
@@ -236,9 +235,7 @@ html, body{
     text-align: center;
     justify-content: center;
 }
-.rank img, .rules img{
-	max-width: 95%;
-}
+.rank img, .rules img{max-width: 99%;}
 
 #rules{
 	position: relative;
@@ -322,17 +319,15 @@ ol.custom:first-child {
   counter-reset: customlistcounter;
 }
 
-ol.users{
-	max-width: 95%;
-	text-align: left;
-	box-sizing: border-box;
-	background: url(../img/rank-repeat.png) 0px -1px;
-	background-size: contain;
-	margin: 0px auto;
-	padding: 24px 34px 24px 24px;
-	border: none;
-	margin-top: -1px!important;
-}
+ol.users{max-width: 99%;
+text-align: left;
+box-sizing: border-box;
+background: url(../img/rank-repeat.png) 0px -1px;
+background-size: contain;
+margin: 0px auto;
+padding: 24px 25px 24px 24px;
+border: none;
+margin-top: -3px !important;}
 
 .users .thumb {
     width: 61px;
@@ -387,13 +382,11 @@ ol.users li.user div.texts{
 	position: relative;
 	/* opacity: 0; */
 }
-.intro{
-	position: relative;
-	height: 100%;
-	display: flex;
-	z-index: 1;
-	overflow: hidden;
-}
+.intro{position: relative;
+height: 100%;
+display: flex;
+z-index: 1;
+overflow: hidden;}
 
 .intro .btns{
 	position: absolute;
