@@ -1,5 +1,6 @@
 html, body{
 	height: 100%;
+	overflow: hidden;
 }
 
 .btn{
@@ -27,7 +28,7 @@ html, body{
 
 #gamecontainer{
 	position: relative;
-	height: 490px;
+	width: 640px;
 	text-align: center;
 	padding-top: 118px;
 	box-sizing: border-box;
@@ -39,9 +40,9 @@ html, body{
 }
 
 #gamecontainer img.board{
-	width: 320px;
+	width: 640px;
 	position: absolute;
-	left: calc(50% - 160px);
+	left: 0;
 	z-index: 0;
 	top: 0px;
 }
@@ -49,18 +50,19 @@ html, body{
 #gamecontainer .blocks{
 	display: flex;
 	flex-wrap: wrap;
-	height: 290px;
+	height: 560px;
 	box-sizing: border-box;
-	width: 280px;
+	width: 520px;
 	justify-content: space-around;
 	margin: 0 auto;
 	z-index: 10;
 	position: relative;
+	padding-top: 156px;
 }
 
 #gamecontainer .blocks .block{
-	width: 30%;
-	height: 30%;
+	width: 160px;
+	height: 175px;
 	text-align: center;
 	display: inline-block;
 	padding-top: 7px;
@@ -70,15 +72,17 @@ html, body{
 #gamecontainer .blocks .block img{
 	max-height: 100%;
 	min-width: 0;
-	height: 80px;
+	height: 130px;
 	vertical-align: middle;
 }
 
 .game .action, .game .numbers{
 	text-align: center;
-	position: relative;
-	margin-top: 20px;
-	width: 100%;
+    position: fixed;
+    margin-top: 20px;
+    width: 100%;
+    left: 0;
+    bottom: 74px;
 }
 .game .numbers{
 	display: flex;
@@ -99,8 +103,8 @@ html, body{
 
 .game .btns .start{
 	background: url('../img/start-button.png');
-	width: 140px;
-	height: 45px;
+	width: 290px;
+    height: 90px;
 	background-size: cover;
 	background-repeat: no-repeat;
 	color: rgba(255, 255, 255, 0);
@@ -112,7 +116,7 @@ html, body{
 }
 
 .modal img.modal-bg{
-	width: 300px;
+	width: 545px;
 	margin: 0 auto;
 	display: block;
 }
@@ -136,28 +140,28 @@ html, body{
 }
 
 .score .digit{
-	position: absolute;
-	left: calc(50% - 24px);
-	top: 75px;
-	/* font-size: 27px; */
-	color: #fff;
-	display: inline-block;
-	text-align: center;
-	width: 60px;
-	font-size: 35px;
+	    position: absolute;
+    left: calc(50% - 24px);
+    top: 168px;
+    font-size: 27px;
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+    width: 60px;
+    font-size: 35px;
 }
 
 .score .score-primary-text{
-	position: absolute;
-	left: calc(50% - 28px);
-	width: 65px;
-	top: 140px;
+	    position: absolute;
+    left: calc(50% - 65px);
+    width: 150px;
+    top: 90px;
 }
 .score .score-secondary-box {
-	width: 200px;
-	position: absolute;
-	left: calc(50% - 100px);
-	top: 220px;
+	    width: 345px;
+    position: absolute;
+    left: calc(50% - 170px);
+    top: 385px;
 }
 .score .score-secondary-text {
     width: 100%
@@ -166,9 +170,9 @@ html, body{
     float: left;
     position: absolute;
     right: 15px;
-    top: 0px;
+    top: 21px;
     color: #fff;
-    font-size: 15px;
+    font-size: 22px;
     line-height: 68px;
 }
 
@@ -177,20 +181,23 @@ html, body{
 
 .score .play.btn{
 	background-image: url('../img/btns/play.png');
-	height: 38px;
+	    height: 85px;
+    width: 177px;
 	font-size: 21px;
 }
 
 .score .rank.btn{
 	background-image: url('../img/btns/rank-btn.png');
-	height: 38px;
+	width: 179px;
+    height: 84px;
 	font-size: 21px;
 	margin-left: 10px;
 }
 
 .score .share.btn{
 	background-image: url('../img/btns/share.png');
-	height: 38px;
+	width: 172px;
+    height: 84px;
 	font-size: 14px;
 	margin-right: 10px;
 }
@@ -239,8 +246,7 @@ html, body{
 }
 
 #rules .btns a img, #rank .btns a img{
-	height: 39px;
-	width: auto;
+	width: 240px;
 	max-width: 100%;
 	margin-right: 10px;
 }
@@ -364,4 +370,13 @@ ol.users li.user div.texts{
 	flex-direction: column;
 	justify-content: flex-start;
 	width: 85px;
+}
+
+
+.home {
+	background-image: url(../img/home.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	width:100%;
+	height:100%;
 }
