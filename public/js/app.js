@@ -44,14 +44,14 @@
 		}
 
 		this.generate = function(metrix) {
-			var m = metrix,
+			var m = metrix ? metrix : starter,
 				blocks = _.sample(_.range(0, 20), m.length);
 
 			_.each(m, function(block, index){
 				m[index] = _res.blocks[blocks[index]];
 			}.bind(this));
 
-			m[_.random(0, m.length-1)] = _res.defaut+_.sample(_.range(1, _res.defautLenght));
+			m[_.random(0, m.length-1)] = _res.defaut+8;
 			return m;
 		}
 
@@ -59,20 +59,21 @@
 			
 		}
 
-		this.choose = function(index){
+		this.choose = function(index, callback){
 			var match = this.matrix[index].match(_res.defaut), 
 				correct = match && match.length;
-			if (correct && this.time > 0 && this.status == 'started') {
-				this.score+=_res.point;
-
-				this.matrix = this.generate(starter);
-			}
 
 			if (!correct && this.time > 0 && this.status == 'started') {
 				this.time - _res.error > 0 ? this.time = this.time - _res.error : this.time = 0;
  			}
 
-			return correct;
+ 			var reload = false;
+			if (correct && this.time > 0 && this.status == 'started') {				
+				this.score+=_res.point;
+				reload = true
+			}
+
+			return [correct, reload];
 		}
 
 		return this;
@@ -118,6 +119,10 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 		$urlRouterProvider.otherwise('/');
 
 		$stateProvider
+			.state('intro', {
+				url: '/intro',
+				templateUrl: 'templates/intro.html'
+			})
 			.state('home', {
 				url: '/',
 				templateUrl: 'templates/game.html',
@@ -133,7 +138,7 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 				templateUrl: 'templates/rules.html'
 			})
 	}])
-	.controller('Game', function($scope, $interval, ngDialog, $rootScope, $http, $rootScope){
+	.controller('Game', function($scope, $interval, ngDialog, $rootScope, $http, $rootScope, $timeout){
 		$scope.res = {
 			url: 'img/blocks/',
 			blocks: ['001', '002', '003', '004', '005', '006', '007', '008', '009', '010', '011', '012', '013', '014', '015', '016', '017', '018', '019', '020', '021'],
@@ -222,7 +227,15 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 		}
 
 		$scope.choose = function(index){
-			$scope.game.choose(index);
+			var res = $scope.game.choose(index);
+
+			if (res[0] && res[1]) {
+				$scope.rightChoose = index;
+				$timeout(function(){
+					$scope.rightChoose = -1;
+					$scope.game.matrix = $scope.game.generate();
+				}, 500);
+			};
 		}
 	})
 	.controller('Score', ['$scope', '$rootScope', function ($scope, $rootScope) {

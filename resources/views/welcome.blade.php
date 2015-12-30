@@ -53,7 +53,7 @@
                 <div id="gamecontainer">
                     <img src="img/board.png" alt="" class="board">
                     <div class="blocks">
-                        <div class="block" ng-repeat="block in game.matrix track by $index" ng-click="choose($index)">
+                        <div class="block" ng-repeat="block in game.matrix track by $index" ng-click="choose($index)" ng-class="{right : rightChoose == $index}">
                             <img ng-src="@{{res.url + block + res.extension}}" alt="">
                         </div>
                     </div>
@@ -153,6 +153,19 @@
                         <button type="button" class="register-btn btn" ng-click="save()">注册</button>
                     </div>
                     <span class="close" ng-click="closeThisDialog()">x</span>
+                </div>
+            </div>
+        </script>
+        <script type="text/ng-template" id="templates/intro.html">
+            <div class="intro">
+                <img src="img/home.png" alt="">
+                <div class="btns">
+                    <a ui-sref="home" title="">
+                        开始游戏
+                    </a>
+                    <a ui-sref="rules" title="">
+                        活动规则
+                    </a>
                 </div>
             </div>
         </script>

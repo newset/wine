@@ -65,6 +65,20 @@ html, body{
 	display: inline-block;
 	padding-top: 7px;
 	cursor: pointer;
+	position: relative;
+}
+
+#gamecontainer .blocks .block.right:after{
+	background: url('../img/blocks/right.png');
+	content: '';
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0px;
+	top: 10px;
+	background-size: contain;
+	background-repeat: no-repeat;
 }
 
 #gamecontainer .blocks .block img{
