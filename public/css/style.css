@@ -186,8 +186,7 @@ html, body{
     line-height: 68px;
 }
 
-.score .btns{
-}
+.score .btns{bottom: 80px!important;}
 
 .score .play.btn{
 	background-image: url('../img/btns/play.png');
@@ -310,13 +309,13 @@ ol.custom > li {
 
 ol.custom > li:before {
   content: counter(customlistcounter) " ";
-  font-weight: bold;
   float: left;
-  width: 1em;
+  width: 1.4em;
   color: red;
   font-weight: 900;
-  font-size: 30px;
+  font-size: 27px;
   line-height: 60px;
+  text-align: center;
 }
 
 ol.custom:first-child {
@@ -327,11 +326,12 @@ ol.users{
 	max-width: 95%;
 	text-align: left;
 	box-sizing: border-box;
-	background: url(../img/rank-repeat.png);
+	background: url(../img/rank-repeat.png) 0px -1px;
 	background-size: contain;
 	margin: 0px auto;
-	padding: 24px 30px 24px 24px;
-	margin-top: -1px;
+	padding: 24px 34px 24px 24px;
+	border: none;
+	margin-top: -1px!important;
 }
 
 .users .thumb {
