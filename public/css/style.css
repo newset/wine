@@ -24,48 +24,40 @@ html, body{height: 100%;
 	height: 100%;
 }
 
-#gamecontainer{
-	position: relative;
-	height: 490px;
-	text-align: center;
-	padding-top: 118px;
-	box-sizing: border-box;
-}
+#gamecontainer{position: relative;
+height: 490px;
+text-align: center;
+padding-top: 78px;
+box-sizing: border-box;}
 
 #gamecontainer .block{
 	height: 40px;
 	width: 40px;
 }
 
-#gamecontainer img.board{
-	width: 320px;
-	position: absolute;
-	left: calc(50% - 160px);
-	z-index: 0;
-	top: 0px;
-}
+#gamecontainer img.board{width: 280px;
+position: absolute;
+left: calc(50% - 140px);
+z-index: 0;
+top: -20px;}
 
-#gamecontainer .blocks{
-	display: flex;
-	flex-wrap: wrap;
-	height: 290px;
-	box-sizing: border-box;
-	width: 280px;
-	justify-content: space-around;
-	margin: 0 auto;
-	z-index: 10;
-	position: relative;
-}
+#gamecontainer .blocks{display: flex;
+flex-wrap: wrap;
+height: 260px;
+box-sizing: border-box;
+width: 240px;
+justify-content: space-around;
+margin: 0 auto;
+z-index: 10;
+position: relative;}
 
-#gamecontainer .blocks .block{
-	width: 30%;
-	height: 30%;
-	text-align: center;
-	display: inline-block;
-	padding-top: 7px;
-	cursor: pointer;
-	position: relative;
-}
+#gamecontainer .blocks .block{width: 28%;
+height: 28%;
+text-align: center;
+display: inline-block;
+padding-top: 9px;
+cursor: pointer;
+position: relative;}
 
 #gamecontainer .blocks .block.right:after{
 	background: url('../img/blocks/right.png');
