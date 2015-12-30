@@ -379,3 +379,36 @@ ol.users li.user div.texts{
 	justify-content: flex-start;
 	width: 85px;
 }
+
+.intro img{
+	max-width: 100%;
+}
+.intro{
+	position: relative;
+	height: 100%;
+}
+
+.intro .btns{
+	position: absolute;
+	bottom: 0px;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 80px;
+}
+
+.intro .btns .start-game{
+	background: url('../img/btns/start-game.png');
+	display: inline-block;
+}
+
+.intro .btns .show-rules{
+	background: url('../img/btns/show-rules.png');
+	display: inline-block;
+}
+.intro .btns a{
+	color: rgba(255, 255, 255, 0);
+	background-size: contain!important;
+	width: 137px;
+	height: 50px;
+}

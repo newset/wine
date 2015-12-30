@@ -160,10 +160,10 @@
             <div class="intro">
                 <img src="img/home.png" alt="">
                 <div class="btns">
-                    <a ui-sref="home" title="">
+                    <a ui-sref="home" title="" class="start-game">
                         开始游戏
                     </a>
-                    <a ui-sref="rules" title="">
+                    <a ui-sref="rules" title="" class="show-rules">
                         活动规则
                     </a>
                 </div>

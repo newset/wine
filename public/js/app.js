@@ -116,7 +116,7 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 		}
 	}])
 	.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-		$urlRouterProvider.otherwise('/');
+		$urlRouterProvider.otherwise('/intro');
 
 		$stateProvider
 			.state('intro', {
