@@ -93,9 +93,12 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 			ngDialog.closeAll();
 		}
 
+		$rootScope.$state = $state;
+
 		var meUrl = baseUrl + '/api/me';
 		$http.get(meUrl).success(function(res){
-			$rootScope.me = res;
+			$rootScope.me = res.user;
+			$rootScope.leftTimes = res.left;
 		});
 	}])
 	.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
@@ -117,7 +120,7 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 				templateUrl: 'templates/rules.html'
 			})
 	}])
-	.controller('Game', function($scope, $interval, ngDialog, $rootScope, $http){
+	.controller('Game', function($scope, $interval, ngDialog, $rootScope, $http, $rootScope){
 		$scope.res = {
 			url: 'img/blocks/',
 			blocks: ['001', '002', '003', '004', '005', '006', '007', '008', '009', '010', '011', '012', '013', '014', '015', '016', '017', '018', '019', '020', '021'],
@@ -125,7 +128,7 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 			defautLenght: 10,
 			extension: '.png',
 			point: 10,
-			timeLimit: 30
+			timeLimit: 90
 		};
 
 		$scope.initGame = function(){
@@ -136,6 +139,11 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 		$scope.initGame();
 
 		$scope.start = function(){
+			if ($rootScope.leftTimes<=0) {
+				$scope.show('templates/modals/no-left.html');
+				return;
+			};
+
 			// 更新当前状态 根据微信
 			if (!$rootScope.me.user) {
 				var register = $scope.show('templates/modals/info.html', {}, 'Register');
@@ -161,7 +169,8 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 				$http.post(url, {
 					score : $rootScope.me.user && $rootScope.me.user.score < $scope.game.score ? $scope.game.score : $rootScope.me.user.score
 				}).success(function(res){
-					$rootScope.me.user = res;
+					$rootScope.me.user = res.user;
+					$rootScope.leftTimes = res.left;
 
 					var dialog = $scope.show('templates/modals/result.html', 
 						{score: $scope.game.score}
@@ -193,15 +202,13 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 			return ngDialog.open(config);
 		}
 
-		$scope.myscore = function(){
-			// 获取数据
-			$scope.show('templates/modals/my.html', {score: 30});
-		}
-
 		$scope.choose = function(index){
 			$scope.game.choose(index);
 		}
 	})
+	.controller('Score', ['$scope', '$rootScope', function ($scope, $rootScope) {
+		$scope.score = $rootScope.me.user.score;
+	}])
 	.controller('Rank', ['$scope', 'ngDialog', '$state', '$http', function ($scope, ngDialog, $state, $http) {
 		var url = baseUrl + '/api/top';
 		$http.get(url).success(function(res){

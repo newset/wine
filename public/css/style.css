@@ -202,7 +202,7 @@ html, body{
 }
 .rank, .rules{
 	text-align: center;
-	padding-top: 45px;
+	padding-top: 20px;
 }
 .rank .btns{
     display: flex;
@@ -264,4 +264,70 @@ modal content
     right: 46px;
     border-radius: 50%;
     color: rgba(0, 0, 0, 0);
+}
+
+ol.custom {
+  list-style-type: none;
+  margin-left: 0;
+}
+
+ol.custom > li {
+  counter-increment: customlistcounter;
+  width: 100%;
+  vertical-align: top;
+  display: inline-block;
+}
+
+ol.custom > li:before {
+  content: counter(customlistcounter) " ";
+  font-weight: bold;
+  float: left;
+  width: 1em;
+  color: red;
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 60px;
+}
+
+ol.custom:first-child {
+  counter-reset: customlistcounter;
+}
+
+ol.users{
+	max-width: 95%;
+	text-align: left;
+	box-sizing: border-box;
+	background: url(../img/rank-repeat.png);
+	background-size: contain;
+	margin: 0px auto;
+	padding: 24px 30px 24px 24px;
+	margin-top: -1px;
+	height: 300px;
+}
+
+.users .thumb {
+    width: 61px;
+    display: inline-block;
+}
+
+.users .user span.score-text{
+    float: right;
+    display: inline-block;
+    font-size: 34px;
+    margin-right: 20px;
+    color: #C62D2D;
+    line-height: 60px;
+}
+
+ol.users li.user{
+    padding: 10px 0px;
+    border-bottom: 1px dotted #bbb;
+}
+
+ol.users li.user span.name{
+	display: inline-block;
+    line-height: 60px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #5d320e;
 }

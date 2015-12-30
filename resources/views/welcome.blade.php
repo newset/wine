@@ -48,5 +48,132 @@
                 location.href= location.origin + '/wechat/auth';
             }
         </script>
+        <script type="text/ng-template" id="templates/game.html">
+            <div class="game">
+                <div id="gamecontainer">
+                    <img src="img/board.png" alt="" class="board">
+                    <div class="blocks">
+                        <div class="block" ng-repeat="block in game.matrix track by $index" ng-click="choose($index)">
+                            <img ng-src="@{{res.url + block + res.extension}}" alt="">
+                        </div>
+                    </div>
+                    <div class="numbers" ng-show="game.status && game.status == 'started'">
+                        <div class="time" data-time="90">
+                            @{{game.time}}
+                            <span>s</span>
+                        </div>
+                        <div class="score" data-score="0" ng-bind="game.score">
+                            
+                        </div>
+                    </div>
+                    <div class="action btns" ng-hide="game.status && game.status == 'started'">
+                        <input type="button" value="开始" class="start btn" ng-click="start()">
+                    </div>
+                </div>
+                <div style="text-align: center">
+                    <a ui-sref="rank">
+                        <img src="img/win-btn.png" alt="" style="width: 50%">
+                    </a>
+                </div>
+            </div>
+        </script>
+        <script type="text/ng-template" id="templates/rules.html">
+            <div id="rules">
+                <img src="img/rules.jpg" alt="">
+                <div class="btns">
+                    <a ui-sref="home" title="">
+                        <img src="img/btns/start.png" alt="">
+                    </a>
+                    <a ui-sref="rank" title="">
+                        <img src="img/btns/rank.png" alt="">
+                    </a>
+                </div>
+            </div>
+        </script>
+        <script type="text/ng-template" id="templates/rank.html">
+            <div class="rank" id="rank">
+                <img src="img/rank-header.png" alt="">
+               <ol class="users custom">
+                    <li ng-repeat="user in users" class="user">
+                        <div class="thumb">
+                               <img ng-src="@{{user.openid.headimgurl}}" alt="">
+                        </div> 
+                        <span ng-bind="user.name" class="name">
+                        </span>
+
+                        <span ng-bind="user.score" class="score-text"></span>
+                    </li>
+                </ol>
+                <img src="img/rank-footer.png" alt="">
+
+                <div class="btns">
+                    <a href="" title="" ng-click="show()"><img src="img/btns/myscore.png" alt=""></a>
+                    <a href="#rules" title=""><img src="img/btns/see-rules.png" alt=""></a>
+                </div>
+            </div>
+        </script>
+        <script type="text/ng-template" id="templates/modals/result.html">
+            <div class="score modal">
+                <div class="modal-container">
+                    <img src="img/result.png" alt="" class="modal-bg">
+
+                    <span class="digit">@{{ngDialogData.score}}</span>
+                    <img src="img/this-score-text.png" alt="" class="score-primary-text">
+                    <div class="score-secondary-box">
+                        <img src="img/highest-score.png" alt="" class="score-secondary-text">
+                        <span>@{{me.user.score}}</span>
+                    </div>
+                    <div class="btns">
+                        <button type="button" class="play btn" ng-click="closeThisDialog('play')">再玩一次</button>
+                        <button type="button" class="rank btn" ng-click="go('rank')">查看排名</button>
+                    </div>
+                    <span>剩余机会 @{{leftTimes}}</span>
+                    <span class="close" ng-click="closeThisDialog()">x</span>
+                </div>
+            </div>
+        </script>
+        <script type="text/ng-template" id="templates/modals/info.html">
+            <div class="register modal" ng-controller="Register">
+                <div class="modal-container">
+                    <img src="img/modal-bg.png" alt="" class="modal-bg">
+                    <div class="modal-content">
+                        <form method="get" accept-charset="utf-8">
+                            <input type="text" ng-model="user.mobile" value="" placeholder="电话">
+                            <input type="text" ng-model="user.name" value="" placeholder="姓名">
+                        </form>
+                    </div>
+                    <div class="btns">
+                        <button type="button" class="register-btn btn" ng-click="save()">注册</button>
+                    </div>
+                    <span class="close" ng-click="closeThisDialog()">x</span>
+                </div>
+            </div>
+        </script>
+        <script type="text/ng-template" id="templates/modals/no-left.html">
+            <div class="score modal">
+                <div class="modal-container">
+                    <img src="img/no-left.png" alt="" class="modal-bg">
+                    <div class="btns">
+                        <button type="button" class="share btn" ng-click="closeThisDialog('share')">分享到朋友圈</button>
+                        <button type="button" class="rank btn" ng-click="closeThisDialog('play');$state.go('rank')">查看排名</button>
+                    </div>
+                    <span class="close" ng-click="closeThisDialog()">x</span>
+                </div>
+            </div>
+        </script>
+        <script type="text/ng-template" id="templates/modals/score.html">
+            <div class="score modal" ng-controller="Score">
+                <div class="modal-container">
+                    <span class="digit">@{{score}}</span>
+                    <img src="img/result.png" alt="" class="modal-bg">
+                    <img src="img/my-score.png" alt="" class="score-primary-text">
+                    <div class="btns">
+                        <button type="button" class="share btn" ng-click="closeThisDialog('share')">分享到朋友圈</button>
+                        <button type="button" class="rank btn" ng-click="closeThisDialog('play')">查看排名</button>
+                    </div>
+                    <span class="close" ng-click="closeThisDialog()">x</span>
+                </div>
+            </div>
+        </script>
     </body>
 </html>
