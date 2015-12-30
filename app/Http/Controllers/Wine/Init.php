@@ -100,7 +100,9 @@ class Init extends Controller
 	 */
 	public function getTop()
 	{
-		$users = User::orderBy('score', 'desc')->with('openid')->take(10)->get();
+		$users = User::orderBy('score', 'desc')
+			->whereNotNull('score')
+			->with('openid')->take(10)->get();
 
 		return $users;
 	}

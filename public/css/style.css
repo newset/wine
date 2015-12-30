@@ -137,14 +137,14 @@ html, body{
 
 .score .digit{
 	position: absolute;
-	left: calc(50% - 17px);
+	left: calc(50% - 24px);
 	top: 75px;
 	/* font-size: 27px; */
 	color: #fff;
 	display: inline-block;
 	text-align: center;
-	width: 50px;
-	font-size: 40px;
+	width: 60px;
+	font-size: 35px;
 }
 
 .score .score-primary-text{
@@ -341,6 +341,9 @@ ol.users li.user span.name{
 	font-weight: bold;
 	vertical-align: top;
 	color: #5d320e;
+	/* word-wrap: normal; */
+	overflow: hidden;
+	height: 35px;
 }
 
 ol.users li.user span.time{
