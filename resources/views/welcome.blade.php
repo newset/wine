@@ -146,6 +146,8 @@
                             <input type="text" ng-model="user.mobile" value="" placeholder="电话">
                             <input type="text" ng-model="user.name" value="" placeholder="姓名">
                         </form>
+
+                        <p class="info">留下您的信息，以便中奖后联系你</p>
                     </div>
                     <div class="btns">
                         <button type="button" class="register-btn btn" ng-click="save()">注册</button>
@@ -159,7 +161,7 @@
                 <div class="modal-container">
                     <img src="img/no-left.png" alt="" class="modal-bg">
                     <div class="btns">
-                        <button type="button" class="share btn" ng-click="closeThisDialog('share')">分享到朋友圈</button>
+                        <button type="button" class="share btn" ng-click="showShare()">分享到朋友圈</button>
                         <button type="button" class="rank btn" ng-click="closeThisDialog('play');$state.go('rank')">查看排名</button>
                     </div>
                     <span class="close" ng-click="closeThisDialog()">x</span>
@@ -173,12 +175,15 @@
                     <img src="img/result.png" alt="" class="modal-bg">
                     <img src="img/my-score.png" alt="" class="score-primary-text">
                     <div class="btns">
-                        <button type="button" class="share btn" ng-click="closeThisDialog('share')">分享到朋友圈</button>
+                        <button type="button" class="share btn" ng-click="showShare()">分享到朋友圈</button>
                         <button type="button" class="rank btn" ng-click="closeThisDialog('play')">查看排名</button>
                     </div>
                     <span class="close" ng-click="closeThisDialog()">x</span>
                 </div>
             </div>
+        </script>
+        <script type="text/ng-template" id="templates/modals/share.html">
+            <img src="img/share.png" alt="" style="width:100%" ng-click="closeThisDialog()">
         </script>
     </body>
 </html>

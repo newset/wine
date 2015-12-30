@@ -105,6 +105,14 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 			$rootScope.me = res.user;
 			$rootScope.leftTimes = res.left;
 		});
+
+		$rootScope.showShare =  function(){
+			ngDialog.open({
+				template: 'templates/modals/share.html',
+				className: 'ngdialog-theme-flat ngdialog-theme-custom',
+				showClose: false
+			})
+		}
 	}])
 	.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 		$urlRouterProvider.otherwise('/');
@@ -145,6 +153,7 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 		$scope.initGame();
 
 		$scope.start = function(){
+			
 			if ($rootScope.leftTimes<=0) {
 				$scope.show('templates/modals/no-left.html');
 				return;

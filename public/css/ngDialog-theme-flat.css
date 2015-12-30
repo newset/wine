@@ -112,7 +112,7 @@
 }
 
 .ngdialog.ngdialog-theme-flat .ngdialog-close:before {
-  background: #27ae60;
+  background: #aa100e;
   color: #fff;
   display: block;
   font-family: "Helvetica Neue",sans-serif;
@@ -127,6 +127,7 @@
   text-indent: 1px;
   top: 0;
   width: 1.25em;
+  border-radius: 50%;
 }
 
 .ngdialog.ngdialog-theme-flat .ngdialog-message {

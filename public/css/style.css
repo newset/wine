@@ -194,7 +194,15 @@ html, body{
 	font-size: 14px;
 	margin-right: 10px;
 }
+.register .btns{
+	bottom: 35px!important;
+}
 
+.register .info{
+	margin: 0px;
+	font-size: 13px;
+	color: #ddd;
+}
 .register .register-btn{
 	height: 50px;
 	width: 155px;
