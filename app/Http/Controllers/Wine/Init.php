@@ -28,7 +28,7 @@ class Init extends Controller
 		$user = Openid::with('user')->where('openid', $this->openid)->first();
 
 		$left = 2;
-		if($user->user && $user->user->last && $this->isToday($user->user->last)){
+		if($user && $user->user && $user->user->last && $this->isToday($user->user->last)){
 			$left = 2 - $user->user->times;
 		}
 

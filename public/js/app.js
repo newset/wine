@@ -177,7 +177,7 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 					score = $rootScope.me.user.score;
 				};
 				$http.post(url, {
-					score : 
+					score : score
 				}).success(function(res){
 					$rootScope.me.user = res.user;
 					$rootScope.leftTimes = res.left;
