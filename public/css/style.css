@@ -79,12 +79,10 @@ position: relative;}
 	vertical-align: middle;
 }
 
-.game .action, .game .numbers{
-	text-align: center;
-	position: relative;
-	margin-top: 20px;
-	width: 100%;
-}
+.game .action, .game .numbers{text-align: center;
+position: relative;
+margin-top: 16px;
+width: 100%;}
 .game .numbers{
 	display: flex;
 	justify-content: center;
