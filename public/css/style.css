@@ -35,15 +35,13 @@ box-sizing: border-box;}
 	width: 40px;
 }
 
-#gamecontainer img.board{width: 280px;
-position: absolute;
-left: calc(50% - 140px);
+#gamecontainer img.board{width: 290px;
+position: absolute;left: calc(50% - 145px);
 z-index: 0;
 top: -20px;}
 
 #gamecontainer .blocks{display: flex;
-flex-wrap: wrap;
-height: 260px;
+flex-wrap: wrap;height: 269px;
 box-sizing: border-box;
 width: 240px;
 justify-content: space-around;
@@ -51,8 +49,7 @@ margin: 0 auto;
 z-index: 10;
 position: relative;}
 
-#gamecontainer .blocks .block{width: 28%;
-height: 28%;
+#gamecontainer .blocks .block{width: 30%;height: 30%;
 text-align: center;
 display: inline-block;
 padding-top: 9px;
@@ -88,7 +85,7 @@ width: 100%;}
 	justify-content: center;
 }
 .game .numbers .score, .game .numbers .time{
-	width: 30%;
+	width: 23%;
 	height: 50px;
 	background: url('../img/score-bg.png')  50% no-repeat;
 	background-size: contain;
@@ -310,14 +307,15 @@ ol.custom:first-child {
 }
 
 ol.users{max-width: 99%;
-text-align: left;
-box-sizing: border-box;
-background: url(../img/rank-repeat.png) 0px -1px;
-background-size: contain;
-margin: 0px auto;
-padding: 24px 25px 24px 24px;
-border: none;
-margin-top: -3px !important;}
+	text-align: left;
+	box-sizing: border-box;
+	background: url(../img/rank-repeat.png) 0px -1px;
+	background-size: contain;
+	margin: 0px auto;
+	padding: 24px 25px 24px 24px;
+	border: none;
+	margin-top: -3px !important;
+}
 
 .users .thumb {
     width: 61px;
