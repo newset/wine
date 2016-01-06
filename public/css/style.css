@@ -1,168 +1,203 @@
-html, body{height: 100%;
+html,
+body {
+    height: 100%;
 }
 
-.btn{
-	height: 30px;
-	width: auto;
-	border: none;
-	cursor: pointer;
+.btn {
+    height: 30px;
+    width: auto;
+    border: none;
+    cursor: pointer;
 }
 
-.wrapper{
-	background: url('../img/bg-repeat.jpg');
-	height: 100%;
+.wrapper {
+    background: url('../img/bg-repeat.jpg');
+    /*background-color: #236f49;*/
+    height: 100%;
 }
 
-.grid{
-	height: 100%;
+.grid {
+    height: 100%;
 }
 
-.game{
-	background-image: url('../img/bg.jpg');
-	background-repeat-y: no-repeat;
-	background-size: cover;
-	height: 100%;
+.game {
+    /*background-image: url('../img/bg.jpg');*/
+    background-repeat-y: no-repeat;
+    background-size: cover;
+    height: 100%;
 }
 
-#gamecontainer{position: relative;
-height: 490px;
-text-align: center;
-padding-top: 78px;
-box-sizing: border-box;}
-
-#gamecontainer .block{
-	height: 40px;
-	width: 40px;
+#gamecontainer {
+    position: relative;
+    height: 100%;
+    text-align: center;
+    box-sizing: border-box;
 }
 
-#gamecontainer img.board{width: 290px;
-position: absolute;left: calc(50% - 145px);
-z-index: 0;
-top: -20px;}
-
-#gamecontainer .blocks{display: flex;
-flex-wrap: wrap;height: 269px;
-box-sizing: border-box;
-width: 240px;
-justify-content: space-around;
-margin: 0 auto;
-z-index: 10;
-position: relative;}
-
-#gamecontainer .blocks .block{width: 30%;height: 30%;
-text-align: center;
-display: inline-block;
-padding-top: 9px;
-cursor: pointer;
-position: relative;}
-
-#gamecontainer .blocks .block.right:after{
-	background: url('../img/blocks/right.png');
-	content: '';
-	display: block;
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	left: 0px;
-	top: 10px;
-	background-size: contain;
-	background-repeat: no-repeat;
+#gamecontainer .game-header {
+    height: 240px;
+    background: url('../img/game-header.jpg') 50% 0px no-repeat;
+    background-size: cover;
 }
 
-#gamecontainer .blocks .block img{
-	max-height: 100%;
-	min-width: 0;
-	height: 80px;
-	vertical-align: middle;
+#gamecontainer .block {
+    height: 40px;
+    width: 40px;
 }
 
-.game .action, .game .numbers{text-align: center;
-position: relative;
-margin-top: 16px;
-width: 100%;}
-.game .numbers{
-	display: flex;
-	justify-content: center;
-}
-.game .numbers .score, .game .numbers .time{
-	width: 23%;
-	height: 50px;
-	background: url('../img/score-bg.png')  50% no-repeat;
-	background-size: contain;
-	font-size: 28px;
-	color: #fff;
-	line-height: 50px;
-}
- .game .numbers .time span{
-	font-size: 14px;
- }
-
-.game .btns .start{
-	background: url('../img/start-button.png');
-	width: 140px;
-	height: 45px;
-	background-size: cover;
-	background-repeat: no-repeat;
-	color: rgba(255, 255, 255, 0);
-	margin: 0 auto;
+#gamecontainer img.board {
+    width: 100%;
+    z-index: 0;
 }
 
-#rules img{
-	max-width: 100%;
+#gamecontainer .blocks {
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    justify-content: space-around;
+    margin: 0 10px;
+    position: relative;
+    background: #89000d;
+    border-radius: 5px;
+    margin-top: 10px;
+    height: calc(100% - 260px);
+    padding: 2% 1% 0;
 }
 
-.modal img.modal-bg{
-	width: 300px;
-	margin: 0 auto;
-	display: block;
+#gamecontainer .blocks .block {
+    width: 31%;
+    height: 31%;
+    text-align: center;
+    display: flex;
+    cursor: pointer;
+    position: relative;
+    background: #e09620;
+    vertical-align: middle;
+    border-radius: 4px;
+    justify-content: center;
+    flex-direction: column;
 }
-.modal .modal-container{
-	position: relative;
+
+#gamecontainer .blocks .block.right:after {
+    background: url('../img/blocks/right.png');
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 10px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#gamecontainer .blocks .block img {
+    height: 80%;
+    vertical-align: middle;
+    display: table-cell;
+    margin: 0 auto;
+}
+
+.game .action,
+.game .numbers {
+    text-align: center;
+    position: relative;
+    margin-top: 16px;
+    width: 100%;
+}
+
+.game .numbers {
+    display: flex;
+    justify-content: center;
+}
+
+.game .numbers .score,
+.game .numbers .time {
+    width: 23%;
+    height: 50px;
+    background: url('../img/score-bg.png') 50% no-repeat;
+    background-size: contain;
+    font-size: 28px;
+    color: #fff;
+    line-height: 50px;
+}
+
+.game .numbers .time span {
+    font-size: 14px;
+}
+
+.game .btns .start {
+    background: url('../img/start-button.png');
+    width: 140px;
+    height: 45px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: rgba(255, 255, 255, 0);
+    margin: 0 auto;
+}
+
+#rules img {
+    max-width: 100%;
+}
+
+.modal img.modal-bg {
+    width: 300px;
+    margin: 0 auto;
+    display: block;
+}
+
+.modal .modal-container {
+    position: relative;
     text-align: center;
 }
-.modal .modal-container .btns{
-	position: absolute;
-	bottom: 60px;
-	width: 100%;
-	display: flex;
-	justify-content: center;
-}
-.modal .btn{
-	color: rgba(0, 0, 0, 0);
-	background-repeat: no-repeat;
-	background-size: contain;
-	background-color: transparent;
-	background-position-x: 50%;
+
+.modal .modal-container .btns {
+    position: absolute;
+    bottom: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
-.score .digit{
-	position: absolute;
-	left: calc(50% - 24px);
-	top: 75px;
-	/* font-size: 27px; */
-	color: #fff;
-	display: inline-block;
-	text-align: center;
-	width: 60px;
-	font-size: 35px;
+.modal .btn {
+    color: rgba(0, 0, 0, 0);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: transparent;
+    background-position-x: 50%;
 }
 
-.score .score-primary-text{
-	position: absolute;
-	left: calc(50% - 28px);
-	width: 65px;
-	top: 140px;
+.score .digit {
+    position: absolute;
+    left: calc(50% - 24px);
+    top: 75px;
+    /* font-size: 27px; */
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+    width: 60px;
+    font-size: 35px;
 }
+
+.score .score-primary-text {
+    position: absolute;
+    left: calc(50% - 28px);
+    width: 65px;
+    top: 140px;
+}
+
 .score .score-secondary-box {
-	width: 200px;
-	position: absolute;
-	left: calc(50% - 100px);
-	top: 220px;
+    width: 200px;
+    position: absolute;
+    left: calc(50% - 100px);
+    top: 220px;
 }
+
 .score .score-secondary-text {
     width: 100%
 }
-.score .score-secondary-box span{
+
+.score .score-secondary-box span {
     float: left;
     position: absolute;
     right: 15px;
@@ -172,86 +207,101 @@ width: 100%;}
     line-height: 68px;
 }
 
-.score .btns{bottom: 80px!important;}
-
-.score .play.btn{
-	background-image: url('../img/btns/play.png');
-	height: 38px;
-	font-size: 21px;
+.score .btns {
+    bottom: 80px!important;
 }
 
-.score .rank.btn{
-	background-image: url('../img/btns/rank-btn.png');
-	height: 38px;
-	font-size: 21px;
-	margin-left: 10px;
+.score .play.btn {
+    background-image: url('../img/btns/play.png');
+    height: 38px;
+    font-size: 21px;
 }
 
-.score .share.btn{
-	background-image: url('../img/btns/share.png');
-	height: 38px;
-	font-size: 14px;
-	margin-right: 10px;
-}
-.register .btns{
-	bottom: 35px!important;
+.score .rank.btn {
+    background-image: url('../img/btns/rank-btn.png');
+    height: 38px;
+    font-size: 21px;
+    margin-left: 10px;
 }
 
-.register .info{
-	margin: 0px;
-	font-size: 13px;
-	color: #ddd;
+.score .share.btn {
+    background-image: url('../img/btns/share.png');
+    height: 38px;
+    font-size: 14px;
+    margin-right: 10px;
 }
-.register .register-btn{
-	height: 50px;
-	width: 155px;
-	margin-bottom: 14px;
-	background: url('../img/btns/register-btn.png') 50% no-repeat;
-	background-size: contain;
+
+.register .btns {
+    bottom: 35px!important;
 }
-.rank, .rules{
-	text-align: center;
-	padding-top: 20px;
+
+.register .info {
+    margin: 0px;
+    font-size: 13px;
+    color: #ddd;
 }
-.rank{
+
+.register .register-btn {
+    height: 50px;
+    width: 155px;
+    margin-bottom: 14px;
+    background: url('../img/btns/register-btn.png') 50% no-repeat;
+    background-size: contain;
+}
+
+.rank,
+.rules {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.rank {
     background: url('../img/bg-repeat.jpg');
 }
-.rank .btns{
+
+.rank .btns {
     display: flex;
     padding: 10px 30px;
     text-align: center;
     justify-content: center;
 }
-.rank img, .rules img{max-width: 99%;}
 
-#rules{
-	position: relative;
+.rank img,
+.rules img {
+    max-width: 99%;
 }
 
-#rules .btns{
-	position: absolute;
-	bottom: 10px;
-	text-align: center;
-	width: 100%;
+#rules {
+    position: relative;
 }
 
-#rules .btns a img, #rank .btns a img{
-	height: 39px;
-	width: auto;
-	max-width: 100%;
-	margin-right: 10px;
+#rules .btns {
+    position: absolute;
+    bottom: 10px;
+    text-align: center;
+    width: 100%;
 }
+
+#rules .btns a img,
+#rank .btns a img {
+    height: 39px;
+    width: auto;
+    max-width: 100%;
+    margin-right: 10px;
+}
+
 
 /*
 modal content
  */
-.modal .modal-content{
-	position: absolute;
-	top: 70px;
-	left: calc(50% - 160px);
+
+.modal .modal-content {
+    position: absolute;
+    top: 70px;
+    left: calc(50% - 160px);
 }
 
-.modal .modal-content form input{
+.modal .modal-content form input {
     width: 74%;
     max-width: 200px;
     margin: 15px auto;
@@ -265,12 +315,12 @@ modal content
     border: none;
 }
 
-.modal .modal-content form input::-webkit-input-placeholder{
-	color: #ddffff;
+.modal .modal-content form input::-webkit-input-placeholder {
+    color: #ddffff;
 }
 
-.modal .modal-container .close{
-	position: absolute;
+.modal .modal-container .close {
+    position: absolute;
     width: 48px;
     height: 47px;
     top: 4px;
@@ -280,56 +330,42 @@ modal content
 }
 
 ol.custom {
-  list-style-type: none;
-  margin-left: 0;
+    list-style-type: none;
+    margin-left: 0;
 }
 
 ol.custom > li {
-  counter-increment: customlistcounter;
-  width: 100%;
-  vertical-align: top;
-  display: inline-block;
+    counter-increment: customlistcounter;
+    width: 100%;
+    vertical-align: top;
+    display: inline-block;
 }
 
 ol.custom > li:before {
-  content: counter(customlistcounter) " ";
-  float: left;
-  width: 1.4em;
-  color: red;
-  font-weight: 900;
-  font-size: 27px;
-  line-height: 60px;
-  text-align: center;
+    content: counter(customlistcounter) " ";
+    float: left;
+    width: 1.4em;
+    color: red;
+    font-weight: 900;
+    font-size: 27px;
+    line-height: 60px;
+    text-align: center;
 }
 
 ol.custom:first-child {
-  counter-reset: customlistcounter;
+    counter-reset: customlistcounter;
 }
 
-ol.users{max-width: 99%;
-	text-align: left;
-	box-sizing: border-box;
-	background: url(../img/rank-repeat.png) 0px -1px;
-	background-size: contain;
-	margin: 0px auto;
-	padding: 24px 25px 24px 24px;
-	border: none;
-	margin-top: -3px !important;
-}
-
-@media only screen 
-    and (min-device-width : 375px) // or 213.4375em
-    and (max-device-width : 667px) // or 41.6875em
-    and (width : 375px) // or 23.4375em
-    and (height : 559px) // or 34.9375em
-    and (orientation : portrait) 
-    and (color : 8)
-    and (device-aspect-ratio : 375/667)
-    and (aspect-ratio : 375/559)
-    and (device-pixel-ratio : 2)
-    and (-webkit-min-device-pixel-ratio : 2)
-{ 
-	margin-top: -6px !important;
+ol.users {
+    max-width: 99%;
+    text-align: left;
+    box-sizing: border-box;
+    background: url(../img/rank-repeat.png) 0px -1px;
+    background-size: contain;
+    margin: 0px auto;
+    padding: 24px 25px 24px 24px;
+    border: none;
+    margin-top: -6px !important;
 }
 
 .users .thumb {
@@ -338,7 +374,7 @@ ol.users{max-width: 99%;
     float: left;
 }
 
-.users .user span.score-text{
+.users .user span.score-text {
     position: absolute;
     display: inline-block;
     font-size: 34px;
@@ -349,73 +385,89 @@ ol.users{max-width: 99%;
     top: 19%;
 }
 
-ol.users li.user{
+ol.users li.user {
     padding: 10px 0px;
     border-bottom: 1px dotted #bbb;
     position: relative;
 }
 
-ol.users li.user span.name{
-	display: inline-block;
-	line-height: 30px;
-	font-weight: bold;
-	vertical-align: top;
-	color: #5d320e;
-	/* word-wrap: normal; */
-	overflow: hidden;
-	height: 35px;
+ol.users li.user span.name {
+    display: inline-block;
+    line-height: 30px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #5d320e;
+    /* word-wrap: normal; */
+    overflow: hidden;
+    height: 35px;
 }
 
-ol.users li.user span.time{
-	font-size: 12px;
-	color: #999;
+ol.users li.user span.time {
+    font-size: 12px;
+    color: #999;
 }
 
-ol.users li.user div.texts{
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	width: 85px;
+ol.users li.user div.texts {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 85px;
 }
 
-.intro img{
-	max-width: 100%;
-	align-self: flex-start;
-	z-index: 2;
-	position: relative;
-	/* opacity: 0; */
-}
-.intro{position: relative;
-height: 100%;
-display: flex;
-z-index: 1;
-overflow: hidden;}
-
-.intro .btns{
-	position: absolute;
-	bottom: 0px;
-	display: flex;
-	justify-content: center;
-	width: 100%;
-	height: 65px;
-	z-index: 10000;
-	align-self: flex-end;
-	left: 0px;
-	text-align: center;
+.intro img {
+    max-width: 100%;
+    align-self: flex-start;
+    z-index: 2;
+    position: relative;
+    /* opacity: 0; */
 }
 
-.intro .btns .start-game{
-	background: url('../img/btns/start-game.png');
-	display: inline-block;
+.intro {
+    position: relative;
+    height: 100%;
+    display: flex;
+    z-index: 1;
+    overflow: hidden;
 }
 
-.intro .btns .show-rules{
-	background: url('../img/btns/show-rules.png');
-	display: inline-block;
+.intro .btns {
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 65px;
+    z-index: 10000;
+    align-self: flex-end;
+    left: 0px;
+    text-align: center;
 }
-.intro .btns a{
-	color: rgba(255, 255, 255, 0);
-	background-size: contain!important;
-	width: 137px;
-	height: 50px;
+
+.intro .btns .start-game {
+    background: url('../img/btns/start-game.png') no-repeat;
+    display: inline-block;
+}
+
+.intro .btns .show-rules {
+    background: url('../img/btns/show-rules.png') no-repeat;
+    display: inline-block;
+}
+
+.intro .btns a {
+    color: rgba(255, 255, 255, 0);
+    background-size: contain!important;
+    width: 147px;
+    height: 50px;
+}
+
+.intro-start {
+    position: absolute;
+    bottom: 85px;
+    left: 0px;
+    width: 100%;
+    text-align: center;
+}
+
+.intro-start img {
+    width: 140px;
 }

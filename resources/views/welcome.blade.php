@@ -52,29 +52,24 @@
         <script type="text/ng-template" id="templates/game.html">
             <div class="game">
                 <div id="gamecontainer">
-                    <img src="img/board.png" alt="" class="board">
+                    <div class="game-header">
+                        <div class="numbers" ng-show="game.status && game.status == 'started'">
+                            <div class="time" data-time="90">
+                                @{{game.time}}
+                                <span>s</span>
+                            </div>
+                            <div class="score" data-score="0" ng-bind="game.score">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="blocks">
                         <div class="block" ng-repeat="block in game.matrix track by $index" ng-click="choose($index)" ng-class="{right : rightChoose == $index}">
                             <img ng-src="@{{res.url + block + res.extension}}" alt="">
                         </div>
                     </div>
-                    <div class="numbers" ng-show="game.status && game.status == 'started'">
-                        <div class="time" data-time="90">
-                            @{{game.time}}
-                            <span>s</span>
-                        </div>
-                        <div class="score" data-score="0" ng-bind="game.score">
-                            
-                        </div>
-                    </div>
-                    <div class="action btns" ng-hide="game.status && game.status == 'started'">
-                        <input type="button" value="开始" class="start btn" ng-click="start()">
-                    </div>
-                    <div style="text-align: center; margin-top: 25px;position:relative; z-index:2;">
-                        <a ui-sref="rank" style="display: block;">
-                            <img src="img/win-btn.png" alt="" style="width: 50%">
-                        </a>
-                    </div>
+                    
                 </div>
                 <audio src="1.mp3" autoplay="autoplay" loop="loop">
                 </audio>
@@ -160,9 +155,12 @@
         </script>
         <script type="text/ng-template" id="templates/intro.html">
             <div class="intro">
-                <img src="img/home.png" alt="">
+                <img src="img/home/home.jpg" alt="">
+                <div class="intro-start">
+                    <img src="img/home/start.png " alt="">
+                </div>
                 <div class="btns">
-                    <a ui-sref="home" title="" class="start-game">
+                    <a ui-sref="rank" title="" class="start-game">
                         开始游戏
                     </a>
                     <a ui-sref="rules" title="" class="show-rules">
