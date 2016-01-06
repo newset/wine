@@ -184,7 +184,7 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 			point: 10,
 			levels: [3, 4, 5, 6], 
 			error: 5,
-			timeLimit: 90
+			timeLimit: 30
 		};
 
 		$scope.initGame = function(){
@@ -253,7 +253,7 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 					$scope.rightChoose = -1;
 					$scope.level = $scope.game.nextLevel();
 					$scope.game.matrix = $scope.game.generate();
-				}, 500);
+				}, 100);
 			};
 		}
 	})
