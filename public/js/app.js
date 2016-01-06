@@ -165,7 +165,7 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 			if (!$rootScope.me.user) {
 				var register = $rootScope.show('templates/modals/info.html', {}, 'Register');
 				register.closePromise.then(function(data){
-					if (data.value) {
+					if (data.value == 'play') {
 						$state.go('home');
 					};
 				})
@@ -190,6 +190,7 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 		$scope.initGame = function(){
 			$scope.game = new game('wine', $scope.res);
 			$scope.game.init();
+			$scope.level = 0;
 		}
 
 		$scope.initGame();
@@ -285,7 +286,7 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 			var url = baseUrl + '/api/info'
 			$http.post(url, $scope.user).success(function(res){
 				if (res) {
-					$scope.closeThisDialog('');
+					$scope.closeThisDialog('play');
 				};
 			});
 		}

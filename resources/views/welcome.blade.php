@@ -129,7 +129,7 @@
                         <button type="button" class="play btn" ng-click="closeThisDialog('play')">再玩一次</button>
                         <button type="button" class="rank btn" ng-click="go('rank')">查看排名</button>
                     </div>
-                    <span>剩余机会 @{{leftTimes}}</span>
+                    <span style="" class="left-times">剩余机会 @{{leftTimes}}</span>
                     <span class="close" ng-click="closeThisDialog()">x</span>
                 </div>
             </div>

@@ -202,6 +202,15 @@ body {
     font-size: 35px;
 }
 
+.score .left-times{
+	font-size: 14px;
+    position: absolute;
+    bottom: 25px;
+    color: #fff;
+    width: 100%;
+    left: 0px;
+}
+
 .score .score-primary-text {
     position: absolute;
     left: calc(50% - 28px);
@@ -228,10 +237,6 @@ body {
     color: #fff;
     font-size: 15px;
     line-height: 68px;
-}
-
-.score .btns {
-    bottom: 80px!important;
 }
 
 .score .play.btn {
