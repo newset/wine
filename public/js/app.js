@@ -166,11 +166,11 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 				var register = $rootScope.show('templates/modals/info.html', {}, 'Register');
 				register.closePromise.then(function(data){
 					if (data.value) {
-						$state.go('game');
+						$state.go('home');
 					};
 				})
 			}else{
-				$state.go('game', {});
+				$state.go('home', {});
 			};
 		}
 	}])
