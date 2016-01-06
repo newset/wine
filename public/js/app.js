@@ -8,55 +8,56 @@
 			_timer = null,
 			_instance = [],
 			_res = res, 
+			_level = 0,
 			starter = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-		var doms = {
-			container: '#'+name+'gamecontainer',
-			blockClass: 'block'
-		}
-
 		this.init = function(){
+			_level = 0 ;
 			this.score = 0;
 			this.time = _res.timeLimit;
 			this.status = undefined;
 
-			this.matrix = this.generate(starter);
+			this.matrix = this.generate();
 		}
 
 		this.start = function(timer, target){
 			this.status = 'started';
-
 			// start timer
+			
 		}
 
 		this.pause = function(timer, target) {
 			this.status = 'pause';
-
 			// stop timer
 		}
 
-		this.reload = function(target) {
-			
-		}
 
-		this.reloadMetrix = function(metrix){
-
-		}
-
-		this.generate = function(metrix) {
-			var m = metrix ? metrix : starter,
-				blocks = _.sample(_.range(0, 20), m.length);
+		this.generate = function() {
+			var c = _res.levels[_level],
+				l = c * c,
+				m = _.range(0, l),
+				blocks = _.sample(_.range(0, 20), l<=20 ? l : 20 );
 
 			_.each(m, function(block, index){
-				m[index] = _res.blocks[blocks[index]];
+				var len = _res.blocks.length;
+				m[index] = _res.blocks[blocks[index%(len-1)]];
 			}.bind(this));
-
-			m[_.random(0, m.length-1)] = _res.defaut+8;
+			m[_.random(0, l-1)] = _res.defaut+8;
+			
+			console.log('length: ', c, m, l);
 			return m;
 		}
 
-		this.finish = function(target) {
-			
+		this.levelGrid = function(){
+			return _res.levels[_level];
+		} 
+
+		this.nextLevel = function() {
+			if (_level < _res.levels.length-1) {
+				_level ++;
+			};
+			console.log('level: ', _level);
+			return this.levelGrid();
 		}
 
 		this.choose = function(index, callback){
@@ -114,6 +115,20 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 				showClose: false
 			})
 		}
+
+		$rootScope.show = function(template, data, controller){
+			var config = { 
+				template: template,
+				closeByDocument: false,
+				className: 'ngdialog-theme-flat ngdialog-theme-custom',
+				showClose: false, 
+				data: data
+			};
+			if (controller) {
+				config.controller = controller;
+			};
+			return ngDialog.open(config);
+		}
 	}])
 	.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 		$urlRouterProvider.otherwise('/intro');
@@ -121,7 +136,8 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 		$stateProvider
 			.state('intro', {
 				url: '/intro',
-				templateUrl: 'templates/intro.html'
+				templateUrl: 'templates/intro.html',
+				controller: 'Intro'
 			})
 			.state('home', {
 				url: '/',
@@ -138,6 +154,26 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 				templateUrl: 'templates/rules.html'
 			})
 	}])
+	.controller('Intro', ['$scope', 'ngDialog', '$rootScope', '$http', '$state', function ($scope, ngDialog, $rootScope, $http, $state) {
+		$scope.start = function(){
+			if ($rootScope.leftTimes<=0) {
+				$rootScope.show('templates/modals/no-left.html');
+				return;
+			};
+
+			// 更新当前状态 根据微信
+			if (!$rootScope.me.user) {
+				var register = $rootScope.show('templates/modals/info.html', {}, 'Register');
+				register.closePromise.then(function(data){
+					if (data.value) {
+						$state.go('game');
+					};
+				})
+			}else{
+				$state.go('game', {});
+			};
+		}
+	}])
 	.controller('Game', function($scope, $interval, ngDialog, $rootScope, $http, $rootScope, $timeout){
 		$scope.res = {
 			url: 'img/blocks/',
@@ -146,6 +182,7 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 			defautLenght: 1,
 			extension: '.png',
 			point: 10,
+			levels: [3, 4, 5, 6], 
 			error: 5,
 			timeLimit: 90
 		};
@@ -156,26 +193,6 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 		}
 
 		$scope.initGame();
-
-		$scope.start = function(){
-			
-			if ($rootScope.leftTimes<=0) {
-				$scope.show('templates/modals/no-left.html');
-				return;
-			};
-
-			// 更新当前状态 根据微信
-			if (!$rootScope.me.user) {
-				var register = $scope.show('templates/modals/info.html', {}, 'Register');
-				register.closePromise.then(function(data){
-					$scope.game.start();
-					$scope.startTimer();
-				})
-			}else{
-				$scope.game.start();
-				$scope.startTimer();
-			};
-		}
 
 		$scope.startTimer = function(){
 			// timer
@@ -196,35 +213,36 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 					$rootScope.me.user = res.user;
 					$rootScope.leftTimes = res.left;
 
-					var dialog = $scope.show('templates/modals/result.html', 
+					var dialog = $rootScope.show('templates/modals/result.html', 
 						{score: $scope.game.score}
 					);
 
 					dialog.closePromise.then(function(data){
 						$scope.initGame();
-						if (data.value == 'share') {
-							//显示分享
+						if (data.value == 'play') {
+							//再玩一次
+							$scope.start();
+						}else{
+							// 跳转到其他地方
 							
-						};
+						}
 					});
 				})
 				
 			}, 1000);
 		}
 
-		$scope.show = function(template, data, controller){
-			var config = { 
-				template: template,
-				closeByDocument: false,
-				className: 'ngdialog-theme-flat ngdialog-theme-custom',
-				showClose: false, 
-				data: data
+		$scope.start = function(){
+			if ($rootScope.leftTimes<=0) {
+				$rootScope.show('templates/modals/no-left.html');
+				return;
 			};
-			if (controller) {
-				config.controller = controller;
-			};
-			return ngDialog.open(config);
+
+			$scope.game.start();
+			$scope.startTimer();
 		}
+
+		$scope.start();
 
 		$scope.choose = function(index){
 			var res = $scope.game.choose(index);
@@ -233,6 +251,7 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 				$scope.rightChoose = index;
 				$timeout(function(){
 					$scope.rightChoose = -1;
+					$scope.level = $scope.game.nextLevel();
 					$scope.game.matrix = $scope.game.generate();
 				}, 500);
 			};

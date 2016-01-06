@@ -38,6 +38,7 @@ body {
     height: 240px;
     background: url('../img/game-header.jpg') 50% 0px no-repeat;
     background-size: cover;
+    position: relative;
 }
 
 #gamecontainer .block {
@@ -78,6 +79,21 @@ body {
     flex-direction: column;
 }
 
+#gamecontainer .blocks.level_4 .block{
+	width: 24%;
+	height: 24%;
+}
+
+#gamecontainer .blocks.level_5 .block{
+	width: 19%;
+	height: 19%;
+}
+
+#gamecontainer .blocks.level_6 .block{
+	width: 15%;
+	height: 15%;
+}
+
 #gamecontainer .blocks .block.right:after {
     background: url('../img/blocks/right.png');
     content: '';
@@ -109,17 +125,20 @@ body {
 .game .numbers {
     display: flex;
     justify-content: center;
+    position: absolute;
+    bottom: 0px;
 }
 
 .game .numbers .score,
 .game .numbers .time {
-    width: 23%;
+    width: 22%;
     height: 50px;
     background: url('../img/score-bg.png') 50% no-repeat;
     background-size: contain;
     font-size: 28px;
     color: #fff;
     line-height: 50px;
+    margin-right: 10px;
 }
 
 .game .numbers .time span {
@@ -428,6 +447,7 @@ ol.users li.user div.texts {
     display: flex;
     z-index: 1;
     overflow: hidden;
+    background-color: rgba(127, 0, 3, 0.7);
 }
 
 .intro .btns {
@@ -446,6 +466,7 @@ ol.users li.user div.texts {
 .intro .btns .start-game {
     background: url('../img/btns/start-game.png') no-repeat;
     display: inline-block;
+    margin-right: 10px;
 }
 
 .intro .btns .show-rules {
@@ -469,5 +490,5 @@ ol.users li.user div.texts {
 }
 
 .intro-start img {
-    width: 140px;
+    width: 220px;
 }

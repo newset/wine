@@ -64,7 +64,7 @@
                         </div>
                     </div>
                     
-                    <div class="blocks">
+                    <div class="blocks @{{'level_'+level}}">
                         <div class="block" ng-repeat="block in game.matrix track by $index" ng-click="choose($index)" ng-class="{right : rightChoose == $index}">
                             <img ng-src="@{{res.url + block + res.extension}}" alt="">
                         </div>
@@ -155,13 +155,13 @@
         </script>
         <script type="text/ng-template" id="templates/intro.html">
             <div class="intro">
-                <img src="img/home/home.jpg" alt="">
-                <div class="intro-start">
-                    <img src="img/home/start.png " alt="">
+                <img src="img/home.png" alt="">
+                <div class="intro-start" ng-click="start()">
+                    <img src="img/home/intro-start-button.png " alt="">
                 </div>
                 <div class="btns">
                     <a ui-sref="rank" title="" class="start-game">
-                        开始游戏
+                        游戏排名
                     </a>
                     <a ui-sref="rules" title="" class="show-rules">
                         活动规则
