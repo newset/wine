@@ -1,5 +1,9 @@
 <?php
 
+// if ( env('APP_ENV') != 'local' ) {
+    URL::forceRootUrl(env('APP_ROOT', 'http://d.bloo.com/wine'));
+// }
+// dd(URL::full());
 /*
 |--------------------------------------------------------------------------
 | Routes File
