@@ -1,5 +1,9 @@
 <?php
 
+// if ( env('APP_ENV') != 'local' ) {
+    URL::forceRootUrl('http://d.bloo.com/');
+// }
+// dd(URL::full());
 /*
 |--------------------------------------------------------------------------
 | Routes File
@@ -34,10 +38,6 @@ Route::get('/rank', function (Request $req) {
     }else{
     	return $builder->get();
     }
-});
-
-Route::post('/user', function () {
-    return 'Hello World';
 });
 
 Route::get('init', 'Wine\\Init@index');

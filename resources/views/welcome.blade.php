@@ -15,7 +15,7 @@
         
         <script type="text/javascript">
             window.userinfo = '{{ $user ? 'ok' : ''}}';
-            window.baseUrl = '{{url('/')}}'
+            window.baseUrl = '{{URL::full()}}';
         </script>
     </head>
     <body>
