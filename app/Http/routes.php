@@ -1,9 +1,5 @@
 <?php
 
-// if ( env('APP_ENV') != 'local' ) {
-    URL::forceRootUrl('http://d.bloo.com/');
-// }
-// dd(URL::full());
 /*
 |--------------------------------------------------------------------------
 | Routes File
