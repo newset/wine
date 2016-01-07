@@ -151,7 +151,8 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 			})
 			.state('rules', {
 				url: '/rules',
-				templateUrl: 'templates/rules.html'
+				templateUrl: 'templates/rules.html',
+				controller: 'Rule'
 			})
 	}])
 	.controller('Intro', ['$scope', 'ngDialog', '$rootScope', '$http', '$state', function ($scope, ngDialog, $rootScope, $http, $state) {
@@ -281,6 +282,27 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 			ngDialog.open(config);
 		}
 	}])
+	.controller('Rule', function($rootScope, $scope, $state){
+		$scope.start = function(){
+			if ($rootScope.leftTimes<=0) {
+				$rootScope.show('templates/modals/no-left.html');
+				return;
+			};
+
+			// 更新当前状态 根据微信
+			if (!$rootScope.me.user) {
+				var register = $rootScope.show('templates/modals/info.html', {}, 'Register');
+				register.closePromise.then(function(data){
+					if (data.value == 'play') {
+						$state.go('home');
+					};
+				})
+			}else{
+				$state.go('home', {});
+			};
+		}
+
+	})
 	.controller('Register', ['$scope', '$http', function ($scope, $http) {
 		$scope.save = function(){
 			var url = baseUrl + '/api/info'

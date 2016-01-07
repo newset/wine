@@ -45,7 +45,7 @@
                 localStorage.openid = getParameterByName('openid');
             }
 
-            if (!localStorage.openid && isWechat() && userinfo != 'ok') {
+            if ((!localStorage.openid && isWechat()) || userinfo != 'ok') {
                 location.href= location.origin + '/wechat/auth';
             }
         </script>
@@ -77,9 +77,9 @@
         </script>
         <script type="text/ng-template" id="templates/rules.html">
             <div id="rules">
-                <img src="img/rules.jpg" alt="">
+                <img src="img/rules.png" alt="">
                 <div class="btns">
-                    <a ui-sref="home" title="">
+                    <a ng-click="start()" title="">
                         <img src="img/btns/start.png" alt="">
                     </a>
                     <a ui-sref="rank" title="">
