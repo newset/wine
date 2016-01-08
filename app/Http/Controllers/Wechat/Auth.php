@@ -15,12 +15,14 @@ use Cache;
 class Auth extends Controller {
 
     public function index() {
+    	$root = env('WEIXIN_APP_ROOT', 'http://test.blooplus.cn/');
+
         $scope = Input::get('scope', 'snsapi_userinfo');
-        $goto = Input::get('goto', 'http://test.blooplus.cn/');
+        $goto = Input::get('goto', $root);
         $state = Carbon::now()->format("YmdHi").mt_rand(1000,9999);
         Cache::put('wechat:state:'.$state, $goto, 5);
 
-        $url = $this->getAuthURI('http://test.blooplus.cn/wechat/redirect', $scope, $state);
+        $url = $this->getAuthURI($root.'wechat/redirect', $scope, $state);
 
         return redirect()->away($url);
     }
