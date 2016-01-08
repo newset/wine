@@ -15,7 +15,7 @@
         
         <script type="text/javascript">
             window.userinfo = '{{ $user ? 'ok' : ''}}';
-            window.baseUrl = '{{URL::full()}}';
+            window.baseUrl = '{{env('WEIXIN_APP_ROOT', 'http://test.blooplus.cn/')}}';
         </script>
     </head>
     <body>
@@ -46,7 +46,7 @@
             }
 
             if ((!localStorage.openid && isWechat()) || userinfo != 'ok') {
-                location.href= location.origin + '/wechat/auth';
+                location.href= baseUrl + '/wechat/auth';
             }
         </script>
         <script type="text/ng-template" id="templates/game.html">
