@@ -298,7 +298,7 @@ angular.module('wine', ['ui.router', 'ngDialog'])
 					};
 				})
 			}else{
-				$state.go('home', {});
+				$state.go('home');
 			};
 		}
 
