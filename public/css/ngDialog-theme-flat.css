@@ -98,6 +98,10 @@
   -ms-transform-style: preserve-3d;
   transform-style: preserve-3d;
   width: 600px;
+  
+  display: -webkit-flex;
+  -webkit-justify-content: center;
+  -webkit-flex-direction: column;
 
   display: flex;
   justify-content: center;
