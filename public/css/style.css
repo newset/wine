@@ -52,8 +52,15 @@ body {
 }
 
 #gamecontainer .blocks {
+    display: -webkit-flex;
     display: flex;
+    /* 新版本语法: Opera 12.1, Firefox 22+ */
     flex-wrap: wrap;
+    box-sizing: border-box;
+    -webkit-flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -webkit-justify-content: space-around;
+
     box-sizing: border-box;
     justify-content: space-around;
     margin: 0 10px;
@@ -69,7 +76,7 @@ body {
     width: 31%;
     height: 31%;
     text-align: center;
-    display: flex;
+    display: inline-flex;
     cursor: pointer;
     position: relative;
     background: #e09620;
@@ -80,18 +87,18 @@ body {
 }
 
 #gamecontainer .blocks.level_4 .block{
-	width: 24%;
-	height: 24%;
+    width: 24%;
+    height: 24%;
 }
 
 #gamecontainer .blocks.level_5 .block{
-	width: 19%;
-	height: 19%;
+    width: 19%;
+    height: 19%;
 }
 
 #gamecontainer .blocks.level_6 .block{
-	width: 15%;
-	height: 15%;
+    width: 15%;
+    height: 15%;
 }
 
 #gamecontainer .blocks .block.right:after {
@@ -123,6 +130,10 @@ body {
 }
 
 .game .numbers {
+    /* safari 8 hack*/
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    
     display: flex;
     justify-content: center;
     position: absolute;
@@ -203,7 +214,7 @@ body {
 }
 
 .score .left-times{
-	font-size: 14px;
+    font-size: 14px;
     position: absolute;
     bottom: 25px;
     color: #fff;

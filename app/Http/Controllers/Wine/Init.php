@@ -115,8 +115,9 @@ class Init extends Controller
 
 	public function getAll()
 	{
-		$users = User::with('open')->orderBy('score', 'desc')->paginate(5);
-		// return $users;
+		$limit = Input::get('limit', 15);
+		$users = User::with('open')->orderBy('score', 'desc')->paginate(15);
+
 		return view('users')->with(compact('users'));
 	}
 }
