@@ -131,6 +131,7 @@
                     </div>
                     <span style="" class="left-times">剩余机会 @{{leftTimes}}</span>
                     <span class="close" ng-click="closeThisDialog()">x</span>
+                    <a href="http://wx.1919.cn/b2c1919/member/coupon_code/getlist.jhtml?from=singlemessage&isappinstalled=0" class="cupon"><img src="img/btns/cupon.png"></a>
                 </div>
             </div>
         </script>
@@ -144,7 +145,7 @@
                             <input type="text" ng-model="user.name" value="" placeholder="姓名">
                         </form>
 
-                        <p class="info">留下您的信息，以便中奖后联系你</p>
+                        <p class="info">此电话为1919酒类直供网站和APP帐号<br>默认密码为 123456  </p>
                     </div>
                     <div class="btns">
                         <button type="button" class="register-btn btn" ng-click="save()">注册</button>
@@ -155,7 +156,7 @@
         </script>
         <script type="text/ng-template" id="templates/intro.html">
             <div class="intro">
-                <img src="img/home.png" alt="">
+                <img src="img/home.jpg" alt="">
                 <div class="intro-start" ng-click="start()">
                     <img src="img/home/intro-start-button.png " alt="">
                 </div>
