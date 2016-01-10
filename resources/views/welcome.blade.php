@@ -77,7 +77,7 @@
         </script>
         <script type="text/ng-template" id="templates/rules.html">
             <div id="rules">
-                <img src="img/rules.png" alt="">
+                <img src="img/rules.jpg" alt="">
                 <div class="btns">
                     <a ng-click="start()" title="">
                         <img src="img/btns/start.png" alt="">
